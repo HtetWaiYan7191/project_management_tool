@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class Annoucement < ApplicationRecord
   belongs_to :user
   belongs_to :company
 
-  has_and_belongs_to_many :departments 
-  has_action_text :content
+  has_and_belongs_to_many :departments
+  has_rich_text :content
 
   validates :user, presence: true
   validates :company, presence: true

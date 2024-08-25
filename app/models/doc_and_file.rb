@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DocAndFile < ApplicationRecord
   belongs_to :company
   belongs_to :department

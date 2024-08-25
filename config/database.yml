@@ -10,6 +10,12 @@ development:
   database: project_management_tool_development
   username: postgres 
   password: root 
+
+test:
+  <<: *default
+  database: project_management_tool_development
+  username: postgres 
+  password: root 
   
 production:
   <<: *default

@@ -50,7 +50,7 @@ gem 'bootsnap', require: false
 gem 'image_processing', '~> 1.2'
 
 # Web Login
-gem "devise", "~> 4.9"
+gem 'devise', '~> 4.9'
 
 # Active Storage Validation
 gem 'active_storage_validations'
