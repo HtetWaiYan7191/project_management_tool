@@ -8,12 +8,12 @@ RSpec.describe Company, type: :model do
     expect(company).to be_valid
   end
 
-  describe 'validations' do 
+  describe 'validations' do
     it { should validate_presence_of(:name) }
-    it { should validate_uniqueness_of(:name)}
+    it { should validate_uniqueness_of(:name) }
   end
 
-  describe 'associations' do 
+  describe 'associations' do
     it { should have_many(:departments) }
     it { should have_many(:annoucements) }
     it { should have_many(:users) }

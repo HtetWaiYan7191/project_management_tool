@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe DocAndFile, type: :model do
-  let(:company) {create(:company)}
-  let(:department) {create(:department)}
+  let(:company) { create(:company) }
+  let(:department) { create(:department) }
 
-  describe 'validations' do 
+  describe 'validations' do
     it { should validate_presence_of(:company) }
     it { should validate_presence_of(:department) }
     it { should validate_presence_of(:title) }
@@ -15,10 +15,10 @@ RSpec.describe DocAndFile, type: :model do
     it { should validate_length_of(:description).is_at_most(50) }
   end
 
-  describe 'associations' do 
+  describe 'associations' do
     it { should belong_to(:company) }
     it { should belong_to(:department) }
-    it {should belong_to(:user)}
+    it { should belong_to(:user) }
     it { should have_many_attached(:files) }
   end
 end

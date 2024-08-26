@@ -8,12 +8,12 @@ RSpec.describe Department, type: :model do
     expect(department).to be_valid
   end
 
-  describe 'validations' do 
+  describe 'validations' do
     it { should validate_presence_of(:company) }
     it { should validate_presence_of(:name) }
   end
 
-  describe 'associations' do 
+  describe 'associations' do
     it { should have_many(:doc_and_files) }
     it { should have_many(:users) }
     it { should have_many(:messages) }
