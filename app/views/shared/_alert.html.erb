@@ -1,0 +1,25 @@
+<% if flash[:notice]%>
+  <div 
+    class="alert alert-success d-flex align-items-center justify-content-between w-50   position-absolute notification-hidden notification-position"
+    data-controller="custom-toast-message"
+    data-action="custom-toast-message#show"
+    data-custom-toast-message-enter-class="notification-enter"
+    data-custom-toast-message-leave-class="notification-leave"
+  >
+    <p class="fw-semibold"><%= flash[:notice] %></p>
+    <button data-action="custom-toast-message#hide" class="bi bi-x fs-4 btn"></button>
+  </div>
+<% end %>
+
+<% if flash[:alert]%>
+  <div 
+    class="alert alert-warning d-flex align-items-center justify-content-between w-50  notification-hidden notification-position"
+    data-controller="custom-toast-message"
+    data-action="custom-toast-message#show"
+    data-custom-toast-message-enter-class="notification-enter"
+    data-custom-toast-message-leave-class="notification-leave"
+  >
+    <p class="fw-semibold"><%= flash[:alert]  %></p>
+    <button data-action="custom-toast-message#hide" class="bi bi-x fs-4 btn"></button>
+  </div>
+<% end %>

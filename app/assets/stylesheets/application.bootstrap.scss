@@ -1,6 +1,7 @@
 @import "variables";
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-@import "global";
 @import "bootstrap_overwrite";
 @import 'actiontext.css';
+@import '../stylesheets/vendor/stimulus_notification';
+@import "global";

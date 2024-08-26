@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import CustomToastMessageController from "./custom_toast_message_controller"
+application.register("custom-toast-message", CustomToastMessageController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
