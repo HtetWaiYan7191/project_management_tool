@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :doc_and_file do
-    company { nil }
-    department { nil }
+    association :company, factory: :company
+    association :department, factory: :department
     title { 'MyString' }
     description { 'MyString' }
   end

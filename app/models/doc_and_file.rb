@@ -3,7 +3,8 @@
 class DocAndFile < ApplicationRecord
   belongs_to :company
   belongs_to :department
-
+  belongs_to :user
+  
   has_many_attached :files
 
   validates :company, presence: true

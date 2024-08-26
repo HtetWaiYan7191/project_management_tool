@@ -6,4 +6,5 @@ class Comment < ApplicationRecord
 
   validates :user, presence: true
   validates :content, presence: true
+  validates :commentable, presence: true
 end

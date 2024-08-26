@@ -8,8 +8,14 @@ RSpec.describe Department, type: :model do
     expect(department).to be_valid
   end
 
-  it 'department should not have nil company' do
-    department = build(:department, company_id: nil)
-    expect(department).to_not be_valid
+  describe 'validations' do 
+    it { should validate_presence_of(:company) }
+    it { should validate_presence_of(:name) }
+  end
+
+  describe 'associations' do 
+    it { should have_many(:doc_and_files) }
+    it { should have_many(:users) }
+    it { should have_many(:messages) }
   end
 end
