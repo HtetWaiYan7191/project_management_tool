@@ -1,8 +1,12 @@
-<% if ActsAsTenant.current_tenant %>
-  <h1>Welcome to <%= ActsAsTenant.current_tenant.name %></h1>
-<% else %>
-  <h1>No tenant is currently set.</h1>
-<% end %>
+<section class="home-section pt-5">
+  <h2 class="text-center">Website Redesign</h2>
+  <p class='text-center'>Everything related to the redesign of our Website</p>
 
-<%= button_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
-<%= current_department.name %>
+  <div class="home-board-card-container row gap-4 w-75 mx-auto mt-5">
+    <% @cards.each do |card| %>
+      <%= render partial: 'shared/board_card', locals: {card_title: card[:title], card_description: card[:description], card_link: card[:link] }%>
+    <% end %>
+  </div>
+<%= button_to "Log Out", destroy_user_session_path, method: :delete, class:'btn btn-primary', data: { turbo: false } %>
+
+</section>
