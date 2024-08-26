@@ -79,10 +79,12 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 5.0'
-  
 end
 
 gem 'rubocop-rails', require: false
 
 # Role Permission
 gem 'cancancan', '~> 3.6.1'
+
+# Multitenancy 
+gem 'acts_as_tenant'

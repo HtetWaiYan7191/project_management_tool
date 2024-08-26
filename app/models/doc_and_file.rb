@@ -4,7 +4,9 @@ class DocAndFile < ApplicationRecord
   belongs_to :company
   belongs_to :department
   belongs_to :user
-  
+
+  acts_as_tenant(:company)  
+
   has_many_attached :files
 
   validates :company, presence: true
