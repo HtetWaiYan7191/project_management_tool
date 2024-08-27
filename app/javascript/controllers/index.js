@@ -4,8 +4,14 @@
 
 import { application } from "./application"
 
+import ChooseDepartmentsController from "./choose_departments_controller"
+application.register("choose-departments", ChooseDepartmentsController)
+
 import CustomToastMessageController from "./custom_toast_message_controller"
 application.register("custom-toast-message", CustomToastMessageController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import SlimSelectController from "./slim_select_controller"
+application.register("slim-select", SlimSelectController)
