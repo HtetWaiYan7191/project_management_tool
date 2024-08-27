@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "annoucements" do %>
+  <% if annoucements.any? %>
+    <div id="annoucements">
+      <% annoucements.each do |annoucement| %>
+        <%= render annoucement %>
+        <p>
+          <%= link_to "Show this announcement", annoucement, data: { turbo_frame: "annoucements" } %>
+        </p>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="d-flex justify-content-center align-items-center mt-5">
+      <%= render 'shared/no_data' %>
+    </div>
+  <% end %>
+<% end %>
