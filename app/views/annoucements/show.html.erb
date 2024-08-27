@@ -1,10 +1,21 @@
 <%= turbo_frame_tag "annoucements" do %>
-  <%= render @annoucement %>
-
-  <div>
-    <%= link_to "Edit this annoucement", edit_annoucement_path(@annoucement) %> |
-    <%= link_to "Back to annoucements", annoucements_path %>
-
-    <%= button_to "Destroy this annoucement", @annoucement, method: :delete %>
+<section class="annoucement-section w-75 mx-auto">
+  <div class="annoucement-header my-4">
+    <p class="text-center">🔊ANNOUCEMENT</p>
+    <h3 class="text-center fw-bold  mx-auto" style="width: fit-content"><%= @annoucement.title %></h3>
+    <div class="annoucement-header-info d-flex justify-content-center align-items-center">
+      <div>
+        <%= image_tag "" %>
+        <span><%= current_user.full_name ? current_user.full_name : current_user.email %></span>
+        <small><%= format_time(@annoucement.created_at) %></small>
+        <small><%= current_user.department.name %></small>
+      </div>
+    </div>
   </div>
+  
+  <div class="annoucement-body mt-5 px-4">
+    <%= @annoucement.content %>
+    <%= link_to "Back to annoucements", annoucements_path %>
+  </div>
+</section>
 <% end %>

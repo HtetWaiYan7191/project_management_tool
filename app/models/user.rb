@@ -6,11 +6,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         
   belongs_to :company
   belongs_to :department
-         
-  acts_as_tenant(:company)  
+
+  acts_as_tenant(:company)
 
   has_many :doc_and_files
   has_many :comments, dependent: :destroy

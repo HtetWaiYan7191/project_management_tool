@@ -86,5 +86,5 @@ gem 'rubocop-rails', require: false
 # Role Permission
 gem 'cancancan', '~> 3.6.1'
 
-# Multitenancy 
+# Multitenancy
 gem 'acts_as_tenant'

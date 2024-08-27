@@ -1,20 +1,17 @@
-<%= turbo_frame_tag dom_id annoucement do %>
-
-  <div id="<%= dom_id annoucement %>">
-    <p>
-      <strong>User:</strong>
-      <%= annoucement.user.email %>
-    </p>
+<div id="<%= dom_id annoucement %>">
+  <p>
+    <strong>User:</strong>
+    <%= annoucement.user.email %>
+  </p>
 
 
-    <p>
-      <strong>Title:</strong>
-      <%= annoucement.title %>
-    </p>
+  <p>
+    <strong>Title:</strong>
+    <%= annoucement.title %>
+  </p>
 
-    <p>
-      <strong>Content</strong>
-      <%= annoucement.content %>
-    </p>
-  </div>
-<% end %>
+  <p>
+    <strong>Content</strong>
+    <%= annoucement.content %>
+  </p>
+</div>

@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     confirmations: 'users/confirmations'
   }
-  
 
   # Define authenticated and unauthenticated root paths
   authenticated :user do
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
   unauthenticated do
     root 'pages#welcome', as: :unauthenticated_root
   end
-    
+
   # Defines the root path route ("/")
   get 'pages/landing', to: 'pages#landing'
 end

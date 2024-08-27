@@ -5,7 +5,7 @@ class DocAndFile < ApplicationRecord
   belongs_to :department
   belongs_to :user
 
-  acts_as_tenant(:company)  
+  acts_as_tenant(:company)
 
   has_many_attached :files
 
