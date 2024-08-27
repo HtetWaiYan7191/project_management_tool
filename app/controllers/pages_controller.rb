@@ -11,16 +11,16 @@ class PagesController < ApplicationController
     @cards = [{
       title: "Annoucement",
       description: "Post Annoucement, pitch ideas and gather feedback while keeping discussions organized and on-topic",
-      link: annoucement_path,
+      link: annoucements_path,
     }, {
       title: "Chat",
       description: 'Chat casually with people, ask questions, connect with your team, and share news without ceremony',
-      link: annoucement_path,
+      link: annoucements_path,
 
     }, {
       title: 'Doc & Files',
       description: 'Centralized place to organized and share docs, spreadsheets, images and other files',
-      link: doc_and_files_path
+      link: annoucements_path
     }]
   end 
 end
