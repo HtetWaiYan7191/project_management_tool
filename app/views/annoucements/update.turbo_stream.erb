@@ -1,6 +1,6 @@
-<%#= turbo_frame_tag "annoucements" do %>
-<%= render 'layouts/board_header' %>
-<section class="annoucement-section w-75 mx-auto py-5">
+<%#= turbo_stream.replace('flash', partial: 'shared/alert')%>
+<%= turbo_stream.replace "annoucements" do  %>
+  <section class="annoucement-section w-75 mx-auto py-5">
   <div class="annoucement-header my-4">
     <div class="d-flex justify-content-between align-items-center">
       <%= render partial: 'shared/back_button', locals: {link: annoucements_path }%>
@@ -10,10 +10,10 @@
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
-              <%= link_to "Edit", edit_annoucement_path(@annoucement), data: { turbo_frame: dom_id(@annoucement)}, class: 'dropdown-item' %>
+            <%= link_to "Edit", edit_annoucement_path(@annoucement), data: {turbo_frame: "edit_form" }, class: 'dropdown-item' %>
           </li>
             <li>
-            <%= button_to "Destroy", annoucement_path(@annoucement), method: :delete, class: 'dropdown-item' %>
+            <%= button_to "Destroy", annoucements_path(@annoucement), method: :delete, class: 'dropdown-item' %>
           </li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
         </ul>
@@ -31,11 +31,11 @@
     </div>
   </div>
   
-    <%= turbo_frame_tag dom_id(@annoucement) do %>
-      <div class="annoucement-body mt-5 px-4">
-          <%= @annoucement.content %>
-      </div>
+  <div class="annoucement-body mt-5 px-4">
+    <%= turbo_frame_tag "edit_form" do %>
+      <%= @annoucement.content %>
     <% end %>
+  </div>
 
   <div class="comment-container pt-3 pb-5 mt-4">
       <h3 class="p-2">Comments</h3>
@@ -47,4 +47,4 @@
       </div>
   </div>
 </section>
-<%# end %>
+<% end %>

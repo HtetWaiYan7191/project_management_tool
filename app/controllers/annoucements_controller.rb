@@ -21,7 +21,9 @@ class AnnoucementsController < ApplicationController
   end
 
   # GET /annoucements/1/edit
-  def edit; end
+  def edit
+    
+  end
 
   # POST /annoucements or /annoucements.json
   def create
@@ -34,6 +36,7 @@ class AnnoucementsController < ApplicationController
         format.turbo_stream
         format.json { render :show, status: :created, location: @annoucement }
       else
+        flash.now[:alert] = @annoucement.errors.full_messages.join(', ')
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @annoucement.errors, status: :unprocessable_entity }
       end
@@ -45,6 +48,7 @@ class AnnoucementsController < ApplicationController
     respond_to do |format|
       if @annoucement.update(annoucement_params)
         format.html { redirect_to annoucement_url(@annoucement), notice: 'Annoucement was successfully updated.' }
+        # format.turbo_stream
         format.json { render :show, status: :ok, location: @annoucement }
       else
         format.html { render :edit, status: :unprocessable_entity }

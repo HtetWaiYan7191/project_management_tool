@@ -1,10 +1,3 @@
-<h1>Editing annoucement</h1>
-
-<%= render 'comments/annoucement_comment_form', annoucement: @annoucement %>
-
-<br>
-
-<div>
-  <%= link_to "Show this annoucement", @annoucement %> |
-  <%= link_to "Back to annoucements", annoucements_path %>
-</div>
+<%= turbo_frame_tag dom_id(@annoucement) do  %>
+  <%= render 'form', annoucement: @annoucement %>
+<%end %>
