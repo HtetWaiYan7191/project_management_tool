@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :annoucements
+  resources :annoucements do
+    resources :comments
+  end
+
+  resources :doc_and_files do
+    resources :comments
+  end
+
   resources :departments
   resources :companies
   devise_for :users, {

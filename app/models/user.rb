@@ -11,8 +11,10 @@ class User < ApplicationRecord
 
   acts_as_tenant(:company)
 
+  has_one_attached :avatar
+
   has_many :doc_and_files
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :messages, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
@@ -20,4 +22,8 @@ class User < ApplicationRecord
   validates :department, presence: true
 
   enum role: { user: 0, admin: 1 }
+
+  def avatar_icon
+    avatar.variant(resize_to_limit: [100, 100]).processed.url
+  end
 end

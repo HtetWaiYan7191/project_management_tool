@@ -88,3 +88,6 @@ gem 'cancancan', '~> 3.6.1'
 
 # Multitenancy
 gem 'acts_as_tenant'
+
+# Image resizing
+gem 'mini_magick', '~> 4.13'
