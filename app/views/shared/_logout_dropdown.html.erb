@@ -1,5 +1,5 @@
     <div class="dropdown">
-        <button class="btn rounded-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn rounded-circle border border-black" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="bi bi-three-dots-vertical"></i>
         </button>
         <ul class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton1">
@@ -8,7 +8,9 @@
            <li>
             <%= link_to "Profile", profile_edit_path, class: 'dropdown-item'%>
            </li>
-          <li><a class="dropdown-item" href="#">Change Password</a></li>
+          <li>
+            <%= link_to "Change Password", edit_user_registration_path, class: 'dropdown-item'%>
+          </li>
           <li><hr class="dropdown-divider my-0"></li>
           <li>
             <%= button_to "Log Out", destroy_user_session_path, method: :delete, class:'dropdown-item py-2', data: { turbo: false } %>

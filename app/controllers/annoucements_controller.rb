@@ -26,10 +26,10 @@ class AnnoucementsController < ApplicationController
   # POST /annoucements or /annoucements.json
   def create
     @annoucement = Annoucement.new(annoucement_params)
-    @annoucement.departments << if annoucement[:is_all_department] == true
+    @annoucement.departments << if annoucement_params[:is_all_department] == true
                                   Department.all
                                 else
-                                  Department.where(id: annoucement[:department_ids])
+                                  Department.where(id: annoucement_params[:department_ids])
                                 end
 
     respond_to do |format|

@@ -1,14 +1,15 @@
-<div class="p-4 border border-b board-header d-flex justify-content-between align-items-center container-fluid">
+<div class="py-4 border border-b board-header d-flex justify-content-between align-items-center container-fluid">
     <div class="btn-container">
         <% if request.path == "/annoucements" %>
-            <%= render partial: 'shared/icon_btn', locals: {icon_class: 'bi bi-plus', text: 'New Annoucement', link: new_annoucement_path, turbo_frame: 'annoucements'}%>
+            <%= render partial: 'shared/icon_btn', locals: {icon_class: 'bi bi-plus', text: 'New', link: new_annoucement_path, turbo_frame: 'annoucements'}%>
         <% else %>
             <%= render partial: 'shared/icon_btn', locals: {icon_class: 'bi bi-arrow-left', text: 'Back', link: annoucements_path, turbo_frame: 'annoucements'}%>
         <% end %>
 
     </div>
-
-    <h3 class="fw-bold">Annoucement Board</h3>
+    <%= link_to authenticated_root_path, class: 'text-decoration-none text-black' do %>
+        <h3 class="fw-bold">Annoucement Board</h3>
+    <% end %>
 
     <div class="filter-container">
         <%= render 'shared/logout_dropdown' %>
