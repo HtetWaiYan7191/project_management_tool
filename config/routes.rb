@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'profile/edit'
+  patch 'profile/update'
+
   resources :annoucements do
     resources :comments
   end

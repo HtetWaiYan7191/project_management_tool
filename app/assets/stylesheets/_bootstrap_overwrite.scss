@@ -11,3 +11,12 @@
 .bg-warning {
    --bs-bg-opacity: 0.2;
 }
+
+.dropdown-item {
+    font-size: 14px;
+}
+
+.list-group-item.active {
+    color: $text;
+    font-weight: 600;
+}

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module PagesHelper
-  def cards 
+  def cards
     [{
       title: 'Annoucement',
       card_type: 'annoucement',
       description: 'Post Annoucement, pitch ideas and gather feedback while keeping discussions organized and on-topic',
       link: annoucements_path,
-      svg:'<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 47.5 47.5" width="100" height="100" enable-background="new 0 0 47.5 47.5" id="file">
+      svg: '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 47.5 47.5" width="100" height="100" enable-background="new 0 0 47.5 47.5" id="file">
                     <defs>
                         <clipPath id="a">
                             <path d="M0 38h38V0H0v38Z"></path>
@@ -91,14 +91,14 @@ module PagesHelper
       <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feBlend>
     </filter>
   </defs>
-</svg>',
+</svg>'
 
     }, {
       title: 'Doc & Files',
       card_type: 'doc_and_file',
       description: 'Centralized place to organized and share docs, spreadsheets, images and other files',
       link: annoucements_path,
-      svg: '<svg id="SvgjsSvg1016" width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1017"></defs><g id="SvgjsG1018"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100" height="100"><path fill="#a1eebd" d="M3.757 0C2.79 0 2.003.787 2.003 1.754V12.27c0 .967.787 1.751 1.754 1.751h4.515c.007 0 .012-.006.02-.007a3.254 3.254 0 0 0 2.982 1.963 3.254 3.254 0 0 0 3.25-3.25 3.254 3.254 0 0 0-2.021-3.004V4.27c0-.008-.007-.014-.008-.023a.246.246 0 0 0-.064-.176l-4-4c-.052-.05-.122-.063-.192-.06C8.23.01 8.222 0 8.212 0H3.757Zm0 .5h4.246v2.262c0 .959.781 1.738 1.74 1.738h2.26v5.066a3.187 3.187 0 0 0-.729-.09 3.254 3.254 0 0 0-3.25 3.25c0 .277.045.54.11.795H3.757a1.256 1.256 0 0 1-1.254-1.253V1.754C2.503 1.063 3.066.5 3.757.5Zm4.746.393L11.628 4H9.74a1.24 1.24 0 0 1-1.238-1.238V.892zm2.77 9.084a2.753 2.753 0 0 1 2.75 2.75 2.752 2.752 0 0 1-2.75 2.75 2.752 2.752 0 0 1-2.75-2.75 2.753 2.753 0 0 1 2.75-2.75zM11 11.23v1.245H9.755v.5H11v1.248h.5v-1.248h1.246v-.5h-1.246V11.23h-.5z" class="color231f20 svgShape"></path></svg></g></svg>',
+      svg: '<svg id="SvgjsSvg1016" width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1017"></defs><g id="SvgjsG1018"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100" height="100"><path fill="#a1eebd" d="M3.757 0C2.79 0 2.003.787 2.003 1.754V12.27c0 .967.787 1.751 1.754 1.751h4.515c.007 0 .012-.006.02-.007a3.254 3.254 0 0 0 2.982 1.963 3.254 3.254 0 0 0 3.25-3.25 3.254 3.254 0 0 0-2.021-3.004V4.27c0-.008-.007-.014-.008-.023a.246.246 0 0 0-.064-.176l-4-4c-.052-.05-.122-.063-.192-.06C8.23.01 8.222 0 8.212 0H3.757Zm0 .5h4.246v2.262c0 .959.781 1.738 1.74 1.738h2.26v5.066a3.187 3.187 0 0 0-.729-.09 3.254 3.254 0 0 0-3.25 3.25c0 .277.045.54.11.795H3.757a1.256 1.256 0 0 1-1.254-1.253V1.754C2.503 1.063 3.066.5 3.757.5Zm4.746.393L11.628 4H9.74a1.24 1.24 0 0 1-1.238-1.238V.892zm2.77 9.084a2.753 2.753 0 0 1 2.75 2.75 2.752 2.752 0 0 1-2.75 2.75 2.752 2.752 0 0 1-2.75-2.75 2.753 2.753 0 0 1 2.75-2.75zM11 11.23v1.245H9.755v.5H11v1.248h.5v-1.248h1.246v-.5h-1.246V11.23h-.5z" class="color231f20 svgShape"></path></svg></g></svg>'
     }]
   end
 end

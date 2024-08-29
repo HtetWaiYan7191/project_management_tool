@@ -133,6 +133,7 @@ ActiveRecord::Schema[7.1].define(version: 20_240_825_105_756) do
     t.datetime 'updated_at', null: false
     t.string 'full_name'
     t.integer 'role', default: 0
+    t.string 'position'
     t.bigint 'company_id', null: false
     t.bigint 'department_id', null: false
     t.index ['company_id'], name: 'index_users_on_company_id'

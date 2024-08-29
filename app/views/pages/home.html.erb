@@ -1,17 +1,6 @@
 <section class="home-section pt-5">
   <div class="home-logout-container d-flex justify-content-end container">
-    <div class="dropdown">
-  <button class="btn rounded-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="bi bi-three-dots-vertical"></i>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Profile</a></li>
-    <li><a class="dropdown-item" href="#">Change Password</a></li>
-    <li>
-      <%= button_to "Log Out", destroy_user_session_path, method: :delete, class:'dropdown-item', data: { turbo: false } %>
-    </li>
-  </ul>
-</div>
+    <%= render 'shared/logout_dropdown' %>
   </div>
   <h2 class="text-center fw-bold">Website Redesign</h2>
   <p class='text-center'>Everything related to the redesign of our Website</p>

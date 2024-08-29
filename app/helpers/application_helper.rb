@@ -12,4 +12,12 @@ module ApplicationHelper
   def annoucement_page?
     request.path.include?('/annoucements') # Adjust the path as necessary
   end
+
+  def profile_page
+    request.path == '/profile/edit' ? 'active' : ''
+  end
+
+  def change_password_page
+    request.path == '/users/edit' ? 'active' : ''
+  end
 end
