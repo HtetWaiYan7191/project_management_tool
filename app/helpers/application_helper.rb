@@ -8,4 +8,8 @@ module ApplicationHelper
   def format_hour_minutes(datetime)
     datetime.strftime('%I:%M %p') # %I for 12-hour format, %p for AM/PM
   end
+
+  def annoucement_page?
+    request.path.include?('/annoucements') # Adjust the path as necessary
+  end
 end
