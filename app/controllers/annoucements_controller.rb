@@ -28,7 +28,11 @@ class AnnoucementsController < ApplicationController
   # POST /annoucements or /annoucements.json
   def create
     @annoucement = Annoucement.new(annoucement_params)
-    @annoucements = Annoucement.all
+    if annoucement[:is_all_department] == true
+      @annoucement.departments << Department.all
+    else 
+      @annoucement.departments << Department.where(id: annoucement[:department_ids])
+    end
 
     respond_to do |format|
       if @annoucement.save
@@ -47,6 +51,11 @@ class AnnoucementsController < ApplicationController
   def update
     respond_to do |format|
       if @annoucement.update(annoucement_params)
+        if annoucement_params[:is_all_department] == true
+          @annoucement.departments = Department.all # Associate all departments if the flag is true
+        else
+          @annoucement.departments = Department.where(id: annoucement_params[:department_ids]) # Associate specific departments
+        end
         format.html { redirect_to annoucement_url(@annoucement), notice: 'Annoucement was successfully updated.' }
         # format.turbo_stream
         format.json { render :show, status: :ok, location: @annoucement }
@@ -76,6 +85,9 @@ class AnnoucementsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def annoucement_params
-    params.require(:annoucement).permit(:title, :is_all_department, :content, department_ids: []).merge(user_id: current_user.id)
+    params.require(:annoucement).permit(:title, :company_id, :content, department_ids: []).tap do |whitelisted|
+      whitelisted[:is_all_department] = ActiveModel::Type::Boolean.new.cast(params[:annoucement][:is_all_department])
+      whitelisted[:user_id] = current_user.id
+    end
   end
 end
