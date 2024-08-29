@@ -1,6 +1,6 @@
 <div class="home-board-card col border border-1 rounded overflow-hidden  p-0 pb-4">
     <div class="home-board-card-header">
-        <h5 class="text-center border border-b p-3 fw-bold mb-0"><%= card_title %></h5>
+        <h5 class="text-center border border-b p-3 fw-bold mb-4"><%= card_title %></h5>
     </div>
     <% if @annoucements.present? && card_type == 'annoucement' %>
         <div class="home-board-card-body mt-0">
@@ -27,7 +27,7 @@
         </div>
     <% else %>
         <div class="home-board-card-body">
-                <figure class="d-flex justify-content-center mt-4">
+                <figure class="d-flex justify-content-center">
                     <%= raw(svg) %>
                 </figure>
             <small class="text-center d-block text-muted p-3" style="min-height: 100px">

@@ -1,0 +1,20 @@
+<section class="message-section p-5 overflow-auto bg-warning bg-opacity-25" style="max-height: 700px; min-height: 700px; height: 700px">    <div class="message-header">
+      <h3 class="fw-bold text-capitalize mb-5"><%= current_department.name %></h3>
+    </div>
+  <% if @messages.any? %>
+    <%= turbo_stream_from "#{current_department.id}_messages"  %>
+        <div id="messages" class="d-flex flex-column gap-3">
+            <% @messages.each do |message| %>
+              <%= render message %>
+            <% end %>
+        </div>
+    <div class="mt-5">
+      <%= render 'form' , message: Message.new %>
+    </div>
+  <% else %>
+    <div class="d-flex justify-content-center align-items-center mt-5">
+      <%= render 'shared/no_data' %>
+    </div>
+  <% end %>
+
+  </section>

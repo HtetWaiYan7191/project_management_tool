@@ -1,0 +1,10 @@
+<div id="<%= dom_id message %>" class="d-flex align-items-center gap-2  <%= my_message?(message) ? 'align-self-end flex-row-reverse' : '' %>" style="max-width: 75%">
+  <%= render partial: 'shared/avatar_icon', locals: {link: message.user.avatar_icon} %>
+  <div class="d-flex flex-column bg-light-grey rounded p-2" >
+      <div class=" d-flex align-items-center gap-2 <%= my_message?(message) ? 'flex-row-reverse' : '' %> ">
+        <p class="fw-bold "><%= my_message?(message) ? 'Me' : message.user.full_name %></p>
+        <small class="text-muted fw-semibold"><%= format_hour_minutes(message.created_at) %></small>
+      </div>
+      <p class="text-wrap"><%= message.content %></p>
+  </div>
+</div>

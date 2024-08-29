@@ -1,4 +1,4 @@
-<%= render 'layouts/board_header' %>
+ <%= render partial:'layouts/board_header', locals: {title: "Profile", link: authenticated_root_path, new_link: new_annoucement_path } %>
 <section class="profile-section p-5">
     <div class="container row gx-5">
         <div class="list-group col-3 ">

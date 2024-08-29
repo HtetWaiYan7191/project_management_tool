@@ -22,7 +22,7 @@ module PagesHelper
       title: 'Chat',
       card_type: 'chat',
       description: 'Chat casually with people, ask questions, connect with your team, and share news without ceremony',
-      link: annoucements_path,
+      link: messages_path,
       svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="none" viewBox="0 0 26 24" id="chat">
   <g filter="url(#a)">
     <path fill="#FF6B51" d="M5.46667 18.4972V13.4308C1.96822 13.2175 1.85401 10.6127 1.854 9.07467C1.854 8.5825 1.86156 7.52185 1.94689 4.36472C2.03222 1.20758 4.32614 0.898273 5.46667 0.898269H16.4526C20.9324 0.73828 19.8771 4.379 19.9876 8.66035C20.083 12.3589 18.5375 13.3146 16.383 13.3146L11.4396 13.4308C10.7463 14.1419 9.00778 16.0862 7.22656 17.8039C5.65198 19.3223 5.46667 19.0875 5.46667 18.4972Z"></path>

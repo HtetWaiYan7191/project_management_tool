@@ -14,10 +14,13 @@
   <body>
     <%= render 'shared/alert' %>
     <% if annoucement_page? %>
-        <%= render 'layouts/board_header' %>
+        <%= render partial:'layouts/board_header', locals: {title: 'Annoucements', link: annoucements_path, new_link: new_annoucement_path} %>
+        <%= yield %>
+    <% elsif chat_page? %>
+        <%= render partial:'layouts/board_header', locals: {title: "Campfire", link: messages_path, new_link: new_message_path } %>
         <%= yield %>
     <% else %>
-        <%= yield %>
+      <%= yield %>
     <% end %>
   </body>
 </html>

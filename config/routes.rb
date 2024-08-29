@@ -3,16 +3,17 @@
 Rails.application.routes.draw do
   get 'profile/edit'
   patch 'profile/update'
-
+  
   resources :annoucements do
     resources :comments
   end
-
+  
   resources :doc_and_files do
     resources :comments
   end
-
+  
   resources :departments
+  resources :messages
   resources :companies
   devise_for :users, {
     sessions: 'users/sessions',
