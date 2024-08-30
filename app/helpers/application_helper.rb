@@ -24,5 +24,4 @@ module ApplicationHelper
   def change_password_page
     request.path == '/users/edit' ? 'active' : ''
   end
-
 end

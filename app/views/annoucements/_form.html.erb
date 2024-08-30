@@ -1,5 +1,5 @@
 <%#= turbo_frame_tag "annoucement_form" do %>
-  <div class="p-5 w-75">
+  <div class="p-5">
     <div class='form-container shadow-sm p-4'>
       <%= form_with(model: annoucement, local: true, data: { turbo: false }) do |form| %>
         <div>
@@ -46,8 +46,8 @@
           <% if @annoucement.persisted? %>
           <%= form.submit "Update", class: 'btn btn-secondary' %>
           <% else %>
-          <%= form.submit "Save as a draft", class: 'btn btn-secondary' %>
-          <%= form.submit  "Post this annoucement", class: 'btn btn-outline-secondary text-black' %>
+          <%= form.submit "Save as a draft", class: 'btn btn-secondary', name: 'commit_type', value: 'drafted' %>
+          <%= form.submit  "Post this annoucement", class: 'btn btn-outline-secondary text-black', value: 'published'  %>
           <% end %>
         </div>
       <% end %>

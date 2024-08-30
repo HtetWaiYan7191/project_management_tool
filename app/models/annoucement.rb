@@ -14,4 +14,7 @@ class Annoucement < ApplicationRecord
   validates :user, presence: true
   validates :company, presence: true
   validates :title, presence: true, length: { in: 3..50 }
+
+  enum status: { "drafted": 0, "published": 1 }
+
 end

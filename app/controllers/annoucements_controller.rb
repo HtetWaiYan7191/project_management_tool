@@ -5,7 +5,7 @@ class AnnoucementsController < ApplicationController
 
   # GET /annoucements or /annoucements.json
   def index
-    @annoucements = Annoucement.all
+    @annoucements = Annoucement.published
   end
 
   # GET /annoucements/1 or /annoucements/1.json
@@ -31,10 +31,19 @@ class AnnoucementsController < ApplicationController
                                 else
                                   Department.where(id: annoucement_params[:department_ids])
                                 end
+    @annoucement.status = if params[:commit_type] == 'drafted'
+                            'drafted'
+                          else
+                            'published'
+                          end
 
     respond_to do |format|
       if @annoucement.save
-        format.html { redirect_to annoucement_url(@annoucement), notice: 'Annoucement was successfully created.' }
+        if @annoucement.drafted?
+          format.html { redirect_to annoucements_path, notice: 'Annoucement saved as draft successfully' }
+        else
+          format.html { redirect_to annoucement_url(@annoucement), notice: 'Annoucement was successfully created.' }
+        end
         format.turbo_stream
         format.json { render :show, status: :created, location: @annoucement }
       else

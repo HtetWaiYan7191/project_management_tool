@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   def welcome; end
 
   def home
-    @annoucements = Annoucement.includes(:comments).all.order(updated_at: :desc).limit(4)
+    @annoucements = Annoucement.includes(:comments).published.order(updated_at: :desc).limit(4)
     @cards = cards
   end
 end
