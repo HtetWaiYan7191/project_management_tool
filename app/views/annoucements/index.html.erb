@@ -1,2 +1,39 @@
-<%= render partial: 'annoucements', locals: {annoucements: @annoucements} %>
-
+  <section class=" py-5">
+            <% @grouped_annoucements.each do |date, annoucements| %>
+                    <% if date == Date.today %>
+                        <h3 class="fw-bold  ps-5 pb-3">Today</h3>
+                        <% else %>
+                        <h3 class="fw-bold pt-5 ps-5 pb-3"><%= date.strftime('%B %d, %Y') %></h3>
+                        <% end %>
+                    <div class="container mt-4">
+                        <div class="row g-4">
+                            <% annoucements.each do |annoucement| %>
+                                        <%= link_to annoucement_path(annoucement), class: 'text-decoration-none text-black mt-0' do %>
+                                        <div class="home-board-annoucement-card d-flex border-bottom pt-4 pb-2 px-4 gap-3" >
+                                            <div class="home-board-annoucement-card-text d-flex flex-column gap-2">
+                                                <h4 class="fw-semibold fs-4 position-relative pt-2 pe-3 " style="width: fit-content;"><%= annoucement.title%>
+                                                <% if annoucement.comments.count > 1 %>
+                                                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info">
+                                                            <%= annoucement.comments.count %>
+                                                            <span class="visually-hidden">unread messages</span>
+                                                        </span>
+                                                <% end %>
+                                                </h4>
+                                                <div class="d-flex  align-items-center">
+                                                    <small class="fw-bold"><%= annoucement.user.full_name %></small>
+                                                    <% if annoucement.departments.length == Department.all.count %>
+                                                        <small class="text-muted fw-semibold" style="font-size: 12px">(all Departments)</small>
+                                                    <% else %>
+                                                        <small class="text-muted fw-semibold" style="font-size: 12px"><%= annoucement.departments.count %> departments</small>
+                                                    <% end %>
+                                                </div>
+                                                <p class="text-truncate"><%= annoucement.content %></p>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+            <% end %>
+    </section>
+<%#= render partial: 'annoucements', locals: {annoucements: @annoucements} %>

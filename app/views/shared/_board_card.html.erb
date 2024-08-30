@@ -11,11 +11,11 @@
                     <div class="home-board-annoucement-card-text d-flex flex-column gap-1">
                         <small class="fw-semibold"><%= annoucement.title%></small>
                         <div class="d-flex gap-2 align-items-center">
-                            <% if annoucement.departments.length == Department.all.count %>
-                                <small class="text-muted fw-semibold" style="font-size: 12px">all Departments</small>
-                            <% else %>
-                                 <small><%= annoucement.departments.count %> department</small>
-                            <% end %>
+                                <% if annoucement.departments.length == Department.all.count %>
+                                        <small class="text-muted fw-semibold" style="font-size: 12px">all Departments</small>
+                                <% else %>
+                                        <small class="text-muted fw-semibold" style="font-size: 12px"><%= annoucement.departments.count %> departments</small>
+                                <% end %>
                         </div>
                     </div>
                     <span class="rounded-circle text-center bg-info text-white ms-auto" style="width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center;">

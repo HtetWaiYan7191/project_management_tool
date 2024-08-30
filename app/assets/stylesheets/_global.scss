@@ -37,8 +37,10 @@ p {
 }
 
 .icon-img {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
   object-fit: cover;
 }
 
@@ -55,6 +57,12 @@ p {
   border: none;
   outline: none;
   opacity: 80%;
+}
+
+.home-board-annoucement-card-text .trix-content {
+  max-width: 70%;
+  max-height: 100px;
+  overflow: hidden;
 }
 
 
