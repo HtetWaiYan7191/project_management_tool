@@ -21,6 +21,17 @@
         <% if request.path == '/messages'%>
             <i class="bi bi-bell-fill"> <small>Notifying</small></i>  
         <% end %>
+
+        <%  if request.path == '/annoucements' %>
+            <%= search_form_for @q, url: annoucements_path, method: :get, class: "d-flex" do |f| %>
+                <div class="field me-2">
+                    <%= f.select :status_eq, 
+                        options_for_select([['All', '']] + Annoucement.statuses.to_a.map { |status| [status[0].humanize, status[1]] }, params.dig(:q, :status_eq)), 
+                        {}, 
+                        { class: 'form-select', onchange: 'this.form.submit()' } %>
+                </div>
+            <% end %>
+        <% end %>
         <%= render 'shared/logout_dropdown' %>
     </div>
 </div>

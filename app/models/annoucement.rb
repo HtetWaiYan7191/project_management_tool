@@ -15,6 +15,9 @@ class Annoucement < ApplicationRecord
   validates :company, presence: true
   validates :title, presence: true, length: { in: 3..50 }
 
-  enum status: { "drafted": 0, "published": 1 }
+ enum status: { drafted: 0, published: 1 }
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w(status)
+  end
 end

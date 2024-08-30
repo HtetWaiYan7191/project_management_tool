@@ -5,7 +5,18 @@ class AnnoucementsController < ApplicationController
 
   # GET /annoucements or /annoucements.json
   def index
-    @annoucements = Annoucement.published
+    Rails.logger.debug("Params received: #{params.inspect}")
+    @q = Annoucement.ransack(params[:q])  # Create the search object
+    Rails.logger.debug("Ransack params: #{params[:q]}")
+    @annoucements = @q.result.order(updated_at: :desc)  # Execute the query
+    # @q = Annoucement.ransack(params[:q])
+    # if params[:q][:status_eq] == 'published' && params[:q][:status_eq].present?
+    #   @annoucements = Annoucement.published.order(updated_at: :desc)
+    # elsif params[:q][:status_eq] == 'drafted'
+    #   @annoucements = Annoucement.drafted.order(updated_at: :desc)
+    # else  
+    #   @annoucements = Annoucement.all.order(updated_at: :desc)
+    # end
   end
 
   # GET /annoucements/1 or /annoucements/1.json

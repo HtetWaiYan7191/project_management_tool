@@ -91,3 +91,7 @@ gem 'acts_as_tenant'
 
 # Image resizing
 gem 'mini_magick', '~> 4.13'
+
+# Searching and sorting 
+gem 'ransack'
+
