@@ -10,7 +10,21 @@
     <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet"></link>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
+   <%# message style  %>
+      <style>
+          <%= ".msg-#{current_user&.id}" %> {
+          background-color: #A1EEBD !important;
+          padding: 10px;
+          }
 
+          <%= ".cont-#{current_user&.id}" %> {
+            align-self: end;
+          }
+
+          <%= ".msg-card-#{current_user&.id}" %> {
+            flex-direction: row-reverse;
+          }
+      </style>
   <body>
     <%= render 'shared/alert' %>
     <% if annoucement_page? %>

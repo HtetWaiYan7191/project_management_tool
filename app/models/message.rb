@@ -12,7 +12,7 @@ class Message < ApplicationRecord
   validates :department, presence: true
   validates :content, presence: true
 
-  broadcasts_to ->(message) { "#{message.department.id}_messages" }, inserts_by: :prepend
+  after_create_commit { broadcast_append_to self.department }
 
 end
  
