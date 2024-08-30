@@ -17,7 +17,9 @@ class User < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :annoucements, dependent: :destroy
+  has_many :to_do_lists, class_name: 'ToDoList', foreign_key: 'creator_id', dependent: :destroy
 
+  has_and_belongs_to_many :assigned_to_do_lists, class_name: "ToDoList", dependent: :destroy
   validates :email, presence: true, uniqueness: true
   validates :company, presence: true
   validates :department, presence: true

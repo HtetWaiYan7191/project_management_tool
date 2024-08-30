@@ -1,0 +1,42 @@
+<%= form_with(model: to_do_list) do |form| %>
+  <% if to_do_list.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(to_do_list.errors.count, "error") %> prohibited this to_do_list from being saved:</h2>
+
+      <ul>
+        <% to_do_list.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :to_do_id, style: "display: block" %>
+    <%= form.text_field :to_do_id %>
+  </div>
+
+  <div>
+    <%= form.label :creator_id, style: "display: block" %>
+    <%= form.text_field :creator_id %>
+  </div>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :due_date, style: "display: block" %>
+    <%= form.date_field :due_date %>
+  </div>
+
+  <div>
+    <%= form.label :note, style: "display: block" %>
+    <%= form.text_field :note %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -20,5 +20,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:doc_and_files) }
     it { should have_many(:comments) }
     it { should have_many(:messages) }
+    it {should have_many(:to_do_lists)}
+    it { should have_and_belong_to_many(:assigned_to_do_lists).dependent(:destroy) }
   end
 end

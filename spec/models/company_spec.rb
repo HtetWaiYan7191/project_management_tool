@@ -18,5 +18,6 @@ RSpec.describe Company, type: :model do
     it { should have_many(:annoucements) }
     it { should have_many(:users) }
     it { should have_many(:doc_and_files) }
+    it { should have_many(:to_dos) }
   end
 end

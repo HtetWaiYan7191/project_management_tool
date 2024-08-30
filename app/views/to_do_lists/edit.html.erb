@@ -1,0 +1,10 @@
+<h1>Editing to do list</h1>
+
+<%= render "form", to_do_list: @to_do_list %>
+
+<br>
+
+<div>
+  <%= link_to "Show this to do list", @to_do_list %> |
+  <%= link_to "Back to to do lists", to_do_lists_path %>
+</div>
