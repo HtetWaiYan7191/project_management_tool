@@ -1,10 +1,4 @@
-<h1>Editing to do list</h1>
+<%= turbo_frame_tag dom_id(@to_do_list) do %>
+ <%= render partial: 'to_do_lists/form', locals: {to_do_list: @to_do_list }%>
+<% end %>
 
-<%= render "form", to_do_list: @to_do_list %>
-
-<br>
-
-<div>
-  <%= link_to "Show this to do list", @to_do_list %> |
-  <%= link_to "Back to to do lists", to_do_lists_path %>
-</div>

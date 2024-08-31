@@ -1,4 +1,4 @@
-<section class="d-flex justify-content-center">
+<section class="d-flex justify-content-center" >
   <div class="to-do-form-container w-75  rounded  mt-5 " data-controller="to-do-add-nested-form" >
     <h3 class="fw-bold p-3 border-bottom"><%= @to_do.name %></h3>
     <% if @to_do_lists.present? %>
@@ -6,6 +6,8 @@
         <%= render partial: 'to_do_lists/to_do_list', locals:{ to_do_list: to_do_list } %>
       <% end %>
     <% end %>
-    <%= render @to_do %>
+    <div >
+      <%= render @to_do %>  
+    </div>
   </div>
 </section>

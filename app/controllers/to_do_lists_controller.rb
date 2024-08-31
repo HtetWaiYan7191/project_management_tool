@@ -1,6 +1,6 @@
 class ToDoListsController < ApplicationController
   before_action :set_to_do
-  before_action :set_to_do_list, only: %i[show edit update destroy]
+  before_action :set_to_do_list, only: %i[show edit update destroy hide_edit]
 
   # GET /to_dos/:to_do_id/to_do_lists
   def index
@@ -16,9 +16,16 @@ class ToDoListsController < ApplicationController
     @to_do_list = @to_do.to_do_lists.new
   end
 
-  # GET /to_dos/:to_do_id/to_do_lists/:id/edit
-  def edit
+  def hide_edit 
   end
+
+  # GET /to_dos/:to_do_id/to_do_lists/:id/edit
+ def edit
+  respond_to do |format|
+    format.turbo_stream 
+    format.html
+  end
+end
 
   # POST /to_dos/:to_do_id/to_do_lists
   def create
@@ -37,7 +44,7 @@ class ToDoListsController < ApplicationController
   # PATCH/PUT /to_dos/:to_do_id/to_do_lists/:id
   def update
     if @to_do_list.update(to_do_list_params)
-      redirect_to to_do_to_do_list_path(@to_do, @to_do_list), notice: 'ToDo List was successfully updated.'
+      redirect_to to_do_path(@to_do), notice: 'ToDo List was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end

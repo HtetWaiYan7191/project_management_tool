@@ -1,21 +1,49 @@
-<div id="<%= dom_id to_do_list %>" class="d-flex gap-3 align-items-center border-bottom py-2">
+<div data-controller="to-do-list-edit">
+  <div class="d-flex gap-3 align-items-center border-bottom py-2">
 
-<%= form_with(model: [@to_do, to_do_list], local: true) do |form| %>
-    <div class="form-check mb-0 d-flex align-items-center gap-2">
-      <input class="form-check-input fs-4" type="checkbox" value="<%= to_do_list.status %>" 
-      name="to_do_list[status]" id="<%=to_do_list.id%>" <%= 'checked' if to_do_list.status %>>
+    <!-- Edit Button -->
+    <%= link_to edit_to_do_to_do_list_path(@to_do, to_do_list),
+                  class: 'me-4 pt-2',
+                  data: { 
+                    turbo_frame: dom_id(to_do_list),
+                    action: 'click->to-do-list-edit#edit',
+                    to_do_list_edit_target: 'menuIcon'
+                  }, method: :get do %>
+        <i class="bi bi-list fs-4 text-muted"></i>
+    <% end %>
 
-      <label class="form-check-label fw-bold" for="<%=to_do_list.id%>">
-        <%= to_do_list.name %>
-      </label>
+        <!-- Cross Button (initially hidden) -->
+      <%= link_to hide_edit_to_do_to_do_list_path(@to_do, to_do_list),
+                    class: 'me-4 pt-2 d-none',
+                    data: { 
+                      turbo_frame:dom_id(to_do_list),
+                      action: 'click->to-do-list-edit#edit',
+                      to_do_list_edit_target: 'crossIcon'
+                    } do %>
+          <i class="bi bi-x-circle fs-4 text-muted"></i>
+      <% end %>
+
+
+      <%= form_with(model: [@to_do, to_do_list], local: true) do |form| %>
+          <div class="form-check mb-0 d-flex align-items-center gap-2">
+            <input class="form-check-input fs-4" type="checkbox" value="<%= to_do_list.status %>" 
+            name="to_do_list[status]" id="<%=to_do_list.id%>" <%= 'checked' if to_do_list.status %>>
+
+            <label class="form-check-label fw-bold" for="<%=to_do_list.id%>">
+              <%= to_do_list.name %>
+            </label>
+        </div>
+      <% end %>
+
+      <i class="bi bi-calendar-date fs-4 "></i>
+      <p class="text-muted fw-semibold"><%= format_time(to_do_list.due_date) %></p>
+      <%  to_do_list.assigned_users.each do |user| %>
+      <div class="d-flex gap-2 align-items-center ">
+        <%= render 'shared/user_icon', user: user%>
+      </div>
+      <% end %>
   </div>
-<% end %>
 
-  <i class="bi bi-calendar-date fs-4 "></i>
-  <p class="text-muted fw-semibold"><%= format_time(to_do_list.due_date) %></p>
-  <%  to_do_list.assigned_users.each do |user| %>
-  <div class="d-flex gap-2 align-items-center ">
-    <%= render 'shared/user_icon', user: user%>
-  </div>
-  <% end %>
+    <%= turbo_frame_tag dom_id(to_do_list) do %>
+    <% end %>
 </div>
