@@ -10,8 +10,14 @@ application.register("choose-departments", ChooseDepartmentsController)
 import CustomToastMessageController from "./custom_toast_message_controller"
 application.register("custom-toast-message", CustomToastMessageController)
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
 import SlimSelectController from "./slim_select_controller"
 application.register("slim-select", SlimSelectController)
+
+import ToDoAddNestedFormController from "./to_do_add_nested_form_controller"
+application.register("to-do-add-nested-form", ToDoAddNestedFormController)
