@@ -21,3 +21,6 @@ application.register("slim-select", SlimSelectController)
 
 import ToDoAddNestedFormController from "./to_do_add_nested_form_controller"
 application.register("to-do-add-nested-form", ToDoAddNestedFormController)
+
+import ToDoListEditController from "./to_do_list_edit_controller"
+application.register("to-do-list-edit", ToDoListEditController)
