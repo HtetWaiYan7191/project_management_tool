@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :to_do_lists
-  resources :to_dos
+  resources :to_dos do 
+    resources :to_do_lists
+  end
+  
   get 'profile/edit'
   patch 'profile/update'
 

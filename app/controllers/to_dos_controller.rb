@@ -8,11 +8,14 @@ class ToDosController < ApplicationController
 
   # GET /to_dos/1 or /to_dos/1.json
   def show
+    @to_do_lists = @to_do.to_do_lists.order(created_at: :desc).limit(5)
   end
 
   # GET /to_dos/new
   def new
     @to_do = ToDo.new
+    @to_do.to_do_lists.build # This initializes a new to_do_list for the form
+
   end
 
   # GET /to_dos/1/edit
@@ -28,6 +31,7 @@ class ToDosController < ApplicationController
         format.html { redirect_to to_do_url(@to_do), notice: "To do was successfully created." }
         format.json { render :show, status: :created, location: @to_do }
       else
+        flash.now[:alert] = @to_do.errors.full_messages.join(', ')
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @to_do.errors, status: :unprocessable_entity }
       end
@@ -60,7 +64,7 @@ class ToDosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_to_do
-      @to_do = ToDo.find(params[:id])
+      @to_do = ToDo.includes(:to_do_lists).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

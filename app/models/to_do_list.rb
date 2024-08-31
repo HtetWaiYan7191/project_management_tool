@@ -7,5 +7,11 @@ class ToDoList < ApplicationRecord
   validates :to_do, presence: true
   validates :creator, presence: true
   validates :name, presence: true, length: { maximum: 20 }
+  validate :date_cannot_be_in_the_past
 
+  def date_cannot_be_in_the_past
+    if due_date.present? && due_date < Date.today
+      errors.add(:due_date, "can't be in the past")
+    end
+  end
 end

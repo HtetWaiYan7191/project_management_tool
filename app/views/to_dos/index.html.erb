@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>To dos</h1>
 
 <div id="to_dos">
   <% @to_dos.each do |to_do| %>
-    <%= render to_do %>
+    <%= to_do.name %>
     <p>
       <%= link_to "Show this to do", to_do %>
     </p>

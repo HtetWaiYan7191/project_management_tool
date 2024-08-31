@@ -4,6 +4,7 @@
     border: none;
     padding:  10px 0px;
     width: 100%;
+    background-color: $background;
 }
 
 .form-label {
@@ -19,4 +20,18 @@
     border: none;
     min-height: 300px;
     overflow: auto;
+}
+
+.to-do-list-form .form-control {
+    border: none;
+    background-color: $background; 
+}
+
+.to-do-list-form .form-label {
+    min-width: 130px!important;
+}
+
+.to-do-list-form .form-control:focus {
+    border: none !important;
+    outline: none !important;
 }

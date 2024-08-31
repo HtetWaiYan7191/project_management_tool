@@ -1,10 +1,11 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @to_do %>
-
-<div>
-  <%= link_to "Edit this to do", edit_to_do_path(@to_do) %> |
-  <%= link_to "Back to to dos", to_dos_path %>
-
-  <%= button_to "Destroy this to do", @to_do, method: :delete %>
-</div>
+<section class="d-flex justify-content-center">
+  <div class="to-do-form-container w-75  rounded  mt-5 " data-controller="to-do-add-nested-form" >
+    <h3 class="fw-bold p-3 border-bottom"><%= @to_do.name %></h3>
+    <% if @to_do_lists.present? %>
+      <% @to_do_lists.order(created_at: :desc).each do |to_do_list| %>
+        <%= render partial: 'to_do_lists/to_do_list', locals:{ to_do_list: to_do_list } %>
+      <% end %>
+    <% end %>
+    <%= render @to_do %>
+  </div>
+</section>

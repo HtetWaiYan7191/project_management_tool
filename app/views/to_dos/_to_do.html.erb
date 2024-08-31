@@ -1,12 +1,11 @@
-<div id="<%= dom_id to_do %>">
-  <p>
-    <strong>Name:</strong>
-    <%= to_do.name %>
-  </p>
-
-  <p>
-    <strong>Company:</strong>
-    <%= to_do.company_id %>
-  </p>
-
+<div id="<%= dom_id to_do %>" >
+  <div>
+        <button type="button" class="fw-semibold text-muted p-3 " style="background: inherit" 
+      data-to-do-add-nested-form-target='addButton' data-action="click->to-do-add-nested-form#show" >
+        Click to add extra details...
+      </button>
+      <div class="to-do-list-form border d-none mt-5" data-to-do-add-nested-form-target="nestedFormContainer">
+        <%= render partial: 'to_do_lists/form', locals: {to_do_list: ToDoList.new }%>
+      </div>
+  </div>
 </div>

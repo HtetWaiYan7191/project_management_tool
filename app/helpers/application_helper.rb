@@ -16,6 +16,10 @@ module ApplicationHelper
   def chat_page?
     request.path.include?('/messages') # Adjust the path as necessary
   end
+  
+  def to_do_page?
+    request.path.include?('/to_dos') # Adjust the path as necessary
+  end
 
   def profile_page
     request.path == '/profile/edit' ? 'active' : ''

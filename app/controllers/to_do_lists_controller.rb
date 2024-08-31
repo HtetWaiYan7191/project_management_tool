@@ -1,70 +1,68 @@
 class ToDoListsController < ApplicationController
-  before_action :set_to_do_list, only: %i[ show edit update destroy ]
+  before_action :set_to_do
+  before_action :set_to_do_list, only: %i[show edit update destroy]
 
-  # GET /to_do_lists or /to_do_lists.json
+  # GET /to_dos/:to_do_id/to_do_lists
   def index
-    @to_do_lists = ToDoList.all
+    @to_do_lists = @to_do.to_do_lists
   end
 
-  # GET /to_do_lists/1 or /to_do_lists/1.json
+  # GET /to_dos/:to_do_id/to_do_lists/:id
   def show
   end
 
-  # GET /to_do_lists/new
+  # GET /to_dos/:to_do_id/to_do_lists/new
   def new
-    @to_do_list = ToDoList.new
+    @to_do_list = @to_do.to_do_lists.new
   end
 
-  # GET /to_do_lists/1/edit
+  # GET /to_dos/:to_do_id/to_do_lists/:id/edit
   def edit
   end
 
-  # POST /to_do_lists or /to_do_lists.json
+  # POST /to_dos/:to_do_id/to_do_lists
   def create
-    @to_do_list = ToDoList.new(to_do_list_params)
+    @to_do_list = @to_do.to_do_lists.new(to_do_list_params)
+    
+    user_ids = to_do_list_params[:assigned_user_ids].reject(&:blank?)
+    @to_do_list.assigned_users = User.where(id: user_ids) 
 
-    respond_to do |format|
-      if @to_do_list.save
-        format.html { redirect_to to_do_list_url(@to_do_list), notice: "To do list was successfully created." }
-        format.json { render :show, status: :created, location: @to_do_list }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @to_do_list.errors, status: :unprocessable_entity }
-      end
+    if @to_do_list.save
+      redirect_to to_do_path(@to_do), notice: 'ToDo List was successfully created.'
+    else
+     redirect_to to_do_path(@to_do), status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /to_do_lists/1 or /to_do_lists/1.json
+  # PATCH/PUT /to_dos/:to_do_id/to_do_lists/:id
   def update
-    respond_to do |format|
-      if @to_do_list.update(to_do_list_params)
-        format.html { redirect_to to_do_list_url(@to_do_list), notice: "To do list was successfully updated." }
-        format.json { render :show, status: :ok, location: @to_do_list }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @to_do_list.errors, status: :unprocessable_entity }
-      end
+    if @to_do_list.update(to_do_list_params)
+      redirect_to to_do_to_do_list_path(@to_do, @to_do_list), notice: 'ToDo List was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /to_do_lists/1 or /to_do_lists/1.json
+  # DELETE /to_dos/:to_do_id/to_do_lists/:id
   def destroy
-    @to_do_list.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to to_do_lists_url, notice: "To do list was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @to_do_list.destroy
+    redirect_to to_do_to_do_lists_path(@to_do), notice: 'ToDo List was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_to_do_list
-      @to_do_list = ToDoList.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def to_do_list_params
-      params.require(:to_do_list).permit(:to_do_id, :creator_id, :name, :due_date, :note)
-    end
+  # Set the parent ToDo for nested routes
+  def set_to_do
+    @to_do = ToDo.find(params[:to_do_id])
+  end
+
+  # Set the specific ToDoList for actions like show, edit, update, and destroy
+  def set_to_do_list
+    @to_do_list = @to_do.to_do_lists.find(params[:id])
+  end
+
+  # Strong parameters for ToDoList
+  def to_do_list_params
+    params.require(:to_do_list).permit(:name, :due_date, :note, :status, assigned_user_ids: []).merge(creator_id: current_user.id) # Add other parameters as needed
+  end
 end
