@@ -45,7 +45,11 @@
 
 
       <i class="bi bi-calendar-date fs-4 "></i>
-      <p class="text-muted fw-semibold"><%= format_time(to_do_list.due_date) %></p>
+      <% if to_do_list.due_date.present?%>
+        <p class="text-muted fw-semibold"><%= format_time(to_do_list.due_date) %></p>
+      <% else %>
+        <p class="text-muted fw-semibold">No due date</p>
+      <% end %>
       <%  to_do_list.assigned_users.each do |user| %>
       <div class="d-flex gap-2 align-items-center ">
         <%= render 'shared/user_icon', user: user%>
