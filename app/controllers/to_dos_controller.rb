@@ -1,5 +1,5 @@
 class ToDosController < ApplicationController
-  before_action :set_to_do, only: %i[ show edit update destroy ]
+  before_action :set_to_do, only: %i[ show edit update update_status destroy ]
 
   # GET /to_dos or /to_dos.json
   def index
@@ -51,6 +51,14 @@ class ToDosController < ApplicationController
     end
   end
 
+  def update_status
+    if @to_do.update(to_do_params)
+      respond_to do |format|
+        format.turbo_stream
+      end
+    end
+  end
+
   # DELETE /to_dos/1 or /to_dos/1.json
   def destroy
     @to_do.destroy!
@@ -69,6 +77,6 @@ class ToDosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def to_do_params
-      params.require(:to_do).permit(:name, :company_id)
+      params.require(:to_do).permit(:name, :status, :company_id)
     end
 end

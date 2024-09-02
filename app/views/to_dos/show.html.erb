@@ -1,6 +1,13 @@
 <section class="d-flex justify-content-center" >
   <div class="to-do-form-container w-75  rounded  mt-5 " data-controller="to-do-add-nested-form" >
-    <h3 class="fw-bold p-3 border-bottom"><%= @to_do.name %></h3>
+    <div class="form-check mb-0 d-flex align-items-center gap-2 ms-2">
+      <%= form_with(model: @to_do, url: update_status_to_do_path(@to_do)) do |form| %>
+        <%= form.check_box :status, class: 'form-check-input fs-4', data: {controller: 'to-do-list-update-status', 
+        action: 'to-do-list-update-status#updateStatus'} %>
+        <%= form.label :status, @to_do.name, class: 'fw-bold fs-3 border-bottom' %>
+      <% end %>
+    </div>
+
     <% if @to_do_lists.present? %>
       <% @to_do_lists.order(created_at: :desc).each do |to_do_list| %>
         <%= render partial: 'to_do_lists/to_do_list', locals:{ to_do_list: to_do_list } %>
