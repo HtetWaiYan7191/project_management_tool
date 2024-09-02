@@ -53,8 +53,7 @@ end
   def update_status 
     if @to_do_list.update(to_do_list_params)
         respond_to do |format|
-          format.turbo_stream 
-          format.html
+          format.turbo_stream
         end
     end
   end

@@ -24,8 +24,7 @@
       <% end %>
 
 
-        <%= turbo_frame_tag "to_do_list_#{to_do_list.id}" do %>
-          <%= form_with(model: [@to_do, to_do_list], url: update_status_to_do_to_do_list_path(@to_do, to_do_list), remote: true, data: { turbo_frame: "to_do_list_#{to_do_list.id}" }) do |form| %>
+          <%= form_with(model: [@to_do, to_do_list], url: update_status_to_do_to_do_list_path(@to_do, to_do_list)) do |form| %>
             <div class="form-check mb-0 d-flex align-items-center gap-2">
               <!-- Hidden field to ensure unchecked checkbox sends a value -->
               <%= form.hidden_field :status, value: false %>
@@ -43,7 +42,6 @@
               </label>
             </div>
           <% end %>
-        <% end %>
 
 
       <i class="bi bi-calendar-date fs-4 "></i>
