@@ -4,9 +4,11 @@
   <div class="message-header">
     <h3 class="fw-bold text-capitalize mb-5 d-none"><%= current_department.name %></h3>
   </div>
-  <div class="d-flex flex-column justify-content-around py-5 min-vh-100">
-    <!-- Always present container for messages -->
-    <div id="messages" class="d-flex flex-column gap-3 p-5">
+  
+  <!-- Attach data-controller="message" to the outer container -->
+  <div  class="d-flex flex-column" >
+    <!-- Container for messages -->
+    <div id="messages" class="d-flex flex-column gap-3 p-5 message-container" data-controller="message" data-message-target="messagesContainer" >
       <% if @messages.any? %>
         <% @messages.each do |message| %>
           <%= render message %>
@@ -17,10 +19,11 @@
           <%= render 'shared/no_data', title: 'No Messages Yet', description: 'Chat casually with people, ask questions, connect with your team, and share news without ceremony' %>
         </div>
       <% end %>
+        <div id="anchor" class=""></div>
     </div>
 
     <!-- Message form -->
-    <div class="align-self-bottom px-5">
+    <div class="align-self-bottom px-5 py-3 message-input">
       <%= turbo_frame_tag "new_form" do %>
         <%= render 'form', message: Message.new %>
       <% end %>

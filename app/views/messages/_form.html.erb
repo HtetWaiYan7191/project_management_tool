@@ -1,12 +1,14 @@
 <%= turbo_frame_tag "new_form" do %>
-  <%= form_with(model: message) do |form| %>
+  <%= form_with(model: message, local: true) do |form| %>
     <div class="position-relative">
-      <%= form.text_field :content, class: 'form-control py-3', required: true %>
-        <div class="position-absolute top-50 end-0 translate-middle-y me-4">
+      <%= form.text_area :content, class: 'form-control py-3 text-wrap auto-expand', 
+        required: true, rows: 1, placeholder: "Type your message...",
+        data: { "message-target": "content", "action": "input->message#expandTextarea" } %>
+      <div class="position-absolute top-50 end-0 translate-middle-y me-4">
         <%= form.button type: 'submit', class: 'icon-submit-btn p-0' do %>
           <i class='bi bi-caret-right-fill text-primary fs-2'></i>
         <% end %>
-        </div>
+      </div>
     </div>
   <% end %>
 <% end %>

@@ -1,41 +1,43 @@
-<div class="home-board-card col border border-1 rounded overflow-hidden  p-0 pb-4">
-    <div class="home-board-card-header">
-        <h5 class="text-center border border-b p-3 fw-bold mb-4"><%= card_title %></h5>
-    </div>
-    <% if @annoucements.present? && card_type == 'annoucement' %>
-        <div class="home-board-card-body mt-0">
-            <% @annoucements.each do |annoucement| %>
-            <%= link_to annoucement_path(annoucement), class: 'text-decoration-none text-black' do %>
-                <div class="home-board-annoucement-card d-flex border-bottom pt-2 pb-1 px-4 gap-3" >
-                      <%= render partial: 'shared/avatar_icon', locals: {link: annoucement.user.avatar_icon }%>
-                    <div class="home-board-annoucement-card-text d-flex flex-column gap-1">
-                        <small class="fw-semibold"><%= annoucement.title%></small>
-                        <div class="d-flex gap-2 align-items-center">
-                                <% if annoucement.departments.length == Department.all.count %>
-                                        <small class="text-muted fw-semibold" style="font-size: 12px">all Departments</small>
-                                <% else %>
-                                        <small class="text-muted fw-semibold" style="font-size: 12px"><%= annoucement.departments.count %> departments</small>
-                                <% end %>
+<div class="home-board-card col-4 ">
+    <div class="border border-1 rounded overflow-hidden  p-0 pb-4">
+        <div class="home-board-card-header">
+            <h5 class="text-center border border-b p-3 fw-bold mb-4"><%= card_title %></h5>
+        </div>
+        <% if @annoucements.present? && card_type == 'annoucement' %>
+            <div class="home-board-card-body mt-0">
+                <% @annoucements.each do |annoucement| %>
+                <%= link_to annoucement_path(annoucement), class: 'text-decoration-none text-black' do %>
+                    <div class="home-board-annoucement-card d-flex border-bottom pt-2 pb-1 px-4 gap-3" >
+                        <%= render partial: 'shared/avatar_icon', locals: {link: annoucement.user.avatar_icon }%>
+                        <div class="home-board-annoucement-card-text d-flex flex-column gap-1">
+                            <small class="fw-semibold"><%= annoucement.title%></small>
+                            <div class="d-flex gap-2 align-items-center">
+                                    <% if annoucement.departments.length == Department.all.count %>
+                                            <small class="text-muted fw-semibold" style="font-size: 12px">all Departments</small>
+                                    <% else %>
+                                            <small class="text-muted fw-semibold" style="font-size: 12px"><%= annoucement.departments.count %> departments</small>
+                                    <% end %>
+                            </div>
                         </div>
+                        <span class="rounded-circle text-center bg-info text-white ms-auto" style="width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center;">
+                            <small style="font-size: 12px"><%= annoucement.comments.count %></small>
+                        </span>
                     </div>
-                    <span class="rounded-circle text-center bg-info text-white ms-auto" style="width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center;">
-                        <small style="font-size: 12px"><%= annoucement.comments.count %></small>
-                    </span>
-                </div>
-            <% end %>
-            <% end %>
+                <% end %>
+                <% end %>
+            </div>
+        <% else %>
+            <div class="home-board-card-body">
+                    <figure class="d-flex justify-content-center">
+                        <%= raw(svg) %>
+                    </figure>
+                <small class="text-center d-block text-muted p-3" style="min-height: 100px">
+                    <%= card_description %>
+                </small>
+            </div>
+        <% end %>
+        <div class="home-board-card-btn-container d-flex justify-content-center mt-4">
+            <%= link_to "See More", card_link, class:'btn btn-primary'%>
         </div>
-    <% else %>
-        <div class="home-board-card-body">
-                <figure class="d-flex justify-content-center">
-                    <%= raw(svg) %>
-                </figure>
-            <small class="text-center d-block text-muted p-3" style="min-height: 100px">
-                <%= card_description %>
-            </small>
-        </div>
-    <% end %>
-    <div class="home-board-card-btn-container d-flex justify-content-center mt-4">
-        <%= link_to "See More", card_link, class:'btn btn-primary'%>
     </div>
 </div>

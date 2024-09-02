@@ -70,5 +70,36 @@ p {
   padding: 10px !important;
 }
 
+.message-section {
+  height: 75vh;
+  max-height: 75vh;
+}
+
+.message-container {
+  overflow-y: auto;
+  min-height: 500px;
+  position: relative;
+}
+
+.message-input {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+#messages * {
+  overflow-anchor: none;
+}
+
+#anchor {
+  overflow-anchor: auto;
+  height: 1px;
+}
+
+.auto-expand {
+  resize: none; /* Prevent manual resizing */
+  overflow: hidden; /* Hide scrollbars until necessary */
+}
+
 
 

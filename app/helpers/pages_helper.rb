@@ -18,7 +18,15 @@ module PagesHelper
                         <path d="M0 0h-6.562C-12 0-11.438-5-15-5h-9a4 4 0 0 1-4-4v-10a1 1 0 1 0-2 0 4 4 0 0 1 4-4H0a4 4 0 0 1 4 4v15a4 4 0 0 1-4 4" transform="translate(31 27)" fill="#55acee" fill-opacity="1" fill-rule="nonzero" stroke="none"></path>
                     </g>
                 </svg>'
-    }, {
+    }, 
+    {
+      title: 'To-dos',
+      card_type: 'to_do',
+      description: 'Organize work across teams to get things done on time. Assign tasks, set due dates, and discuss.',
+      link: to_dos_path,
+      svg: '<svg width="100px" height="100px" viewBox="-5.6 -5.6 27.20 27.20" xmlns="http://www.w3.org/2000/svg" fill="#66bb6a" stroke="#66bb6a" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-width="0.00016"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0.6399999999999997,0.6399999999999997), scale(0.92)"><rect x="-5.6" y="-5.6" width="27.20" height="27.20" rx="13.6" fill="#66bb6a" strokewidth="0"></rect></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.096"></g><g id="SVGRepo_iconCarrier"> <path fill="#fafafa" fill-rule="evenodd" d="M4,4 L9,4 C9.55228,4 10,3.55228 10,3 C10,2.44772 9.55228,2 9,2 L4,2 C2.89543,2 2,2.89543 2,4 L2,12 C2,13.1046 2.89543,14 4,14 L12,14 C13.1046,14 14,13.1046 14,12 L14,10 C14,9.44771 13.5523,9 13,9 C12.4477,9 12,9.44771 12,10 L12,12 L4,12 L4,4 Z M15.2071,2.29289 C14.8166,1.90237 14.1834,1.90237 13.7929,2.29289 L8.5,7.58579 L7.70711,6.79289 C7.31658,6.40237 6.68342,6.40237 6.29289,6.79289 C5.90237,7.18342 5.90237,7.81658 6.29289,8.20711 L7.79289,9.70711 C7.98043,9.89464 8.23478,10 8.5,10 C8.76522,10 9.01957,9.89464 9.20711,9.70711 L15.2071,3.70711 C15.5976,3.31658 15.5976,2.68342 15.2071,2.29289 Z"></path> </g></svg>'
+    }, 
+    {
       title: 'Chat',
       card_type: 'chat',
       description: 'Chat casually with people, ask questions, connect with your team, and share news without ceremony',

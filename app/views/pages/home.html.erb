@@ -5,11 +5,13 @@
   <h2 class="text-center fw-bold">Website Redesign</h2>
   <p class='text-center'>Everything related to the redesign of our Website</p>
 
-  <div class="home-board-card-container row gap-4 w-75 mx-auto mt-5">
-    <% @cards.each do |card| %>
-      <%= render partial: 'shared/board_card', locals: {card_title: card[:title], card_description: card[:description],
-       card_link: card[:link], svg: card[:svg], card_type: card[:card_type]  }%>
-    <% end %>
+  <div class="container p-5">
+    <div class="home-board-card-container row g-4 mt-5">
+      <% @cards.each do |card| %>
+        <%= render partial: 'shared/board_card', locals: {card_title: card[:title], card_description: card[:description],
+        card_link: card[:link], svg: card[:svg], card_type: card[:card_type]  }%>
+      <% end %>
+    </div>
   </div>
 
 </section>

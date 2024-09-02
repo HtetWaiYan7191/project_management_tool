@@ -24,7 +24,8 @@
       <% end %>
 
 
-      <%= form_with(model: [@to_do, to_do_list], local: true) do |form| %>
+    <%= turbo_frame_tag "to_do_list_#{to_do_list.id}"  do %>
+      <%= form_with(model: [@to_do, to_do_list], remote: true, data: { turbo_frame: "to_do_list_#{to_do_list.id}" }) do |form| %>
           <div class="form-check mb-0 d-flex align-items-center gap-2">
             <input class="form-check-input fs-4" type="checkbox" value="<%= to_do_list.status %>" 
             name="to_do_list[status]" id="<%=to_do_list.id%>" <%= 'checked' if to_do_list.status %>>
@@ -34,6 +35,7 @@
             </label>
         </div>
       <% end %>
+    <% end %>
 
       <i class="bi bi-calendar-date fs-4 "></i>
       <p class="text-muted fw-semibold"><%= format_time(to_do_list.due_date) %></p>
