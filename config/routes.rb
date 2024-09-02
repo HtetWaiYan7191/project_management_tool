@@ -11,6 +11,7 @@ resources :to_dos do
     resources :to_do_lists do
     member do
       get :hide_edit, to: 'to_do_lists#hide_edit'
+      patch :update_status, to: 'to_do_lists#update_status'
     end
   end
 end

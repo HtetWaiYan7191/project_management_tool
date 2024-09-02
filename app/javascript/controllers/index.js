@@ -27,3 +27,6 @@ application.register("to-do-add-nested-form", ToDoAddNestedFormController)
 
 import ToDoListEditController from "./to_do_list_edit_controller"
 application.register("to-do-list-edit", ToDoListEditController)
+
+import ToDoListUpdateStatusController from "./to_do_list_update_status_controller"
+application.register("to-do-list-update-status", ToDoListUpdateStatusController)

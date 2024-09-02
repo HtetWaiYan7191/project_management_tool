@@ -1,6 +1,6 @@
 class ToDoListsController < ApplicationController
   before_action :set_to_do
-  before_action :set_to_do_list, only: %i[show edit update destroy hide_edit]
+  before_action :set_to_do_list, only: %i[show edit update destroy hide_edit update_status]
 
   # GET /to_dos/:to_do_id/to_do_lists
   def index
@@ -47,6 +47,15 @@ end
       redirect_to to_do_path(@to_do), notice: 'ToDo List was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def update_status 
+    if @to_do_list.update(to_do_list_params)
+        respond_to do |format|
+          format.turbo_stream 
+          format.html
+        end
     end
   end
 
