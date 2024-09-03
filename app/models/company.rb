@@ -8,4 +8,5 @@ class Company < ApplicationRecord
   has_many :users
   has_many :doc_and_files
   has_many :to_dos
+  has_many :boards
 end

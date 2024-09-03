@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :board do
     title { 'MyString' }
-    company { nil }
-    creator { nil }
+    association :company, factory: :company
+    association :creator, factory: :user
   end
 end

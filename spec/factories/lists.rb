@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :list do
     title { 'MyString' }
-    board { nil }
+    association :board, factory: :board
     position { 1 }
   end
 end

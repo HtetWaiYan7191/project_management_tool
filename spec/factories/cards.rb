@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :card do
     title { 'MyString' }
-    list { nil }
+    association :list, factory: :list
     position { 1 }
     due_date { '2024-09-03' }
   end

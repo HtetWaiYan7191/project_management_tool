@@ -94,3 +94,6 @@ gem 'mini_magick', '~> 4.13'
 
 # Searching and sorting
 gem 'ransack'
+
+# Easy sorting
+gem 'acts_as_list'
