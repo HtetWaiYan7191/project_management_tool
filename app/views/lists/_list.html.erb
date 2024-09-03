@@ -5,11 +5,15 @@
             <%= render partial: 'shared/drop_down', locals: {edit_path: edit_board_list_path(@board, list),
              destroy_path: board_list_path(list),  title: "Add a new card to #{list.title}", modal_form: render('cards/form', list: list, card: Card.new)}%>
         </div>
-    
-        <div class="border mt-3" style=" height: 70px">
-            
-        </div>
-    </div>
 
+            <% if list.cards.present?%>
+                <% list.cards.each do |card| %>
+                    <%= render partial: 'cards/card', locals: {card: card} %>
+                <% end %>
+            <% else %>
+                <div class="border mt-3" style=" height: 70px">
+                </div>
+            <% end %>
+    </div>
 </div>
 

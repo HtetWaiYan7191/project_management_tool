@@ -24,6 +24,9 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
 
+    user_ids = card_params[:assigned_user_ids].reject(&:blank?)
+    @card.assigned_users = User.where(id: user_ids)
+    
     respond_to do |format|
       if @card.save
         format.html { redirect_to board_path(@list.board), notice: "Card was successfully created." }
