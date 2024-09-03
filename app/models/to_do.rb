@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ToDo < ApplicationRecord
   belongs_to :company
 
@@ -7,5 +9,4 @@ class ToDo < ApplicationRecord
 
   validates :company, presence: true
   validates :name, presence: true, length: { maximum: 20 }
-
 end

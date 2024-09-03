@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateToDoLists < ActiveRecord::Migration[7.1]
   def change
     create_table :to_do_lists do |t|
@@ -6,7 +8,7 @@ class CreateToDoLists < ActiveRecord::Migration[7.1]
       t.string :name
       t.date :due_date
       t.string :note
-      t.boolean :status, default: :false
+      t.boolean :status, default: false
       t.timestamps
     end
   end

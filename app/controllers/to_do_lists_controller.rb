@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ToDoListsController < ApplicationController
   before_action :set_to_do
   before_action :set_to_do_list, only: %i[show edit update destroy hide_edit update_status]
@@ -8,37 +10,35 @@ class ToDoListsController < ApplicationController
   end
 
   # GET /to_dos/:to_do_id/to_do_lists/:id
-  def show
-  end
+  def show; end
 
   # GET /to_dos/:to_do_id/to_do_lists/new
   def new
     @to_do_list = @to_do.to_do_lists.new
   end
 
-  def hide_edit 
-  end
+  def hide_edit; end
 
   # GET /to_dos/:to_do_id/to_do_lists/:id/edit
- def edit
-  respond_to do |format|
-    format.turbo_stream 
-    format.html
+  def edit
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
   end
-end
 
   # POST /to_dos/:to_do_id/to_do_lists
   def create
     @to_do_list = @to_do.to_do_lists.new(to_do_list_params)
-    
+
     user_ids = to_do_list_params[:assigned_user_ids].reject(&:blank?)
-    @to_do_list.assigned_users = User.where(id: user_ids) 
+    @to_do_list.assigned_users = User.where(id: user_ids)
 
     if @to_do_list.save
       redirect_to to_do_path(@to_do), notice: 'ToDo List was successfully created.'
     else
-    flash.now[:alert] = @to_do_list.errors.full_messages.join(',')
-     render 'to_dos/show'
+      flash.now[:alert] = @to_do_list.errors.full_messages.join(',')
+      render 'to_dos/show'
     end
   end
 
@@ -48,16 +48,14 @@ end
       redirect_to to_do_path(@to_do), notice: 'ToDo List was successfully updated.'
     else
       flash.now[:alert] = @to_do_list.errors.full_messages.join(',')
-      render "to_dos/show"
+      render 'to_dos/show'
     end
   end
 
-  def update_status 
-    if @to_do_list.update(to_do_list_params)
-        respond_to do |format|
-          format.turbo_stream
-        end
-    end
+  def update_status
+    return unless @to_do_list.update(to_do_list_params)
+
+    respond_to(&:turbo_stream)
   end
 
   # DELETE /to_dos/:to_do_id/to_do_lists/:id

@@ -18,20 +18,20 @@ module PagesHelper
                         <path d="M0 0h-6.562C-12 0-11.438-5-15-5h-9a4 4 0 0 1-4-4v-10a1 1 0 1 0-2 0 4 4 0 0 1 4-4H0a4 4 0 0 1 4 4v15a4 4 0 0 1-4 4" transform="translate(31 27)" fill="#55acee" fill-opacity="1" fill-rule="nonzero" stroke="none"></path>
                     </g>
                 </svg>'
-    }, 
-    {
-      title: 'To-dos',
-      card_type: 'to_do',
-      description: 'Organize work across teams to get things done on time. Assign tasks, set due dates, and discuss.',
-      link: to_dos_path,
-      svg: '<svg width="100px" height="100px" viewBox="-5.6 -5.6 27.20 27.20" xmlns="http://www.w3.org/2000/svg" fill="#66bb6a" stroke="#66bb6a" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-width="0.00016"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0.6399999999999997,0.6399999999999997), scale(0.92)"><rect x="-5.6" y="-5.6" width="27.20" height="27.20" rx="13.6" fill="#66bb6a" strokewidth="0"></rect></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.096"></g><g id="SVGRepo_iconCarrier"> <path fill="#fafafa" fill-rule="evenodd" d="M4,4 L9,4 C9.55228,4 10,3.55228 10,3 C10,2.44772 9.55228,2 9,2 L4,2 C2.89543,2 2,2.89543 2,4 L2,12 C2,13.1046 2.89543,14 4,14 L12,14 C13.1046,14 14,13.1046 14,12 L14,10 C14,9.44771 13.5523,9 13,9 C12.4477,9 12,9.44771 12,10 L12,12 L4,12 L4,4 Z M15.2071,2.29289 C14.8166,1.90237 14.1834,1.90237 13.7929,2.29289 L8.5,7.58579 L7.70711,6.79289 C7.31658,6.40237 6.68342,6.40237 6.29289,6.79289 C5.90237,7.18342 5.90237,7.81658 6.29289,8.20711 L7.79289,9.70711 C7.98043,9.89464 8.23478,10 8.5,10 C8.76522,10 9.01957,9.89464 9.20711,9.70711 L15.2071,3.70711 C15.5976,3.31658 15.5976,2.68342 15.2071,2.29289 Z"></path> </g></svg>'
-    }, 
-    {
-      title: 'Chat',
-      card_type: 'chat',
-      description: 'Chat casually with people, ask questions, connect with your team, and share news without ceremony',
-      link: messages_path,
-      svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="none" viewBox="0 0 26 24" id="chat">
+    },
+     {
+       title: 'To-dos',
+       card_type: 'to_do',
+       description: 'Organize work across teams to get things done on time. Assign tasks, set due dates, and discuss.',
+       link: to_dos_path,
+       svg: '<svg width="100px" height="100px" viewBox="-5.6 -5.6 27.20 27.20" xmlns="http://www.w3.org/2000/svg" fill="#66bb6a" stroke="#66bb6a" transform="matrix(1, 0, 0, 1, 0, 0)" stroke-width="0.00016"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0.6399999999999997,0.6399999999999997), scale(0.92)"><rect x="-5.6" y="-5.6" width="27.20" height="27.20" rx="13.6" fill="#66bb6a" strokewidth="0"></rect></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.096"></g><g id="SVGRepo_iconCarrier"> <path fill="#fafafa" fill-rule="evenodd" d="M4,4 L9,4 C9.55228,4 10,3.55228 10,3 C10,2.44772 9.55228,2 9,2 L4,2 C2.89543,2 2,2.89543 2,4 L2,12 C2,13.1046 2.89543,14 4,14 L12,14 C13.1046,14 14,13.1046 14,12 L14,10 C14,9.44771 13.5523,9 13,9 C12.4477,9 12,9.44771 12,10 L12,12 L4,12 L4,4 Z M15.2071,2.29289 C14.8166,1.90237 14.1834,1.90237 13.7929,2.29289 L8.5,7.58579 L7.70711,6.79289 C7.31658,6.40237 6.68342,6.40237 6.29289,6.79289 C5.90237,7.18342 5.90237,7.81658 6.29289,8.20711 L7.79289,9.70711 C7.98043,9.89464 8.23478,10 8.5,10 C8.76522,10 9.01957,9.89464 9.20711,9.70711 L15.2071,3.70711 C15.5976,3.31658 15.5976,2.68342 15.2071,2.29289 Z"></path> </g></svg>'
+     },
+     {
+       title: 'Chat',
+       card_type: 'chat',
+       description: 'Chat casually with people, ask questions, connect with your team, and share news without ceremony',
+       link: messages_path,
+       svg: '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="none" viewBox="0 0 26 24" id="chat">
   <g filter="url(#a)">
     <path fill="#FF6B51" d="M5.46667 18.4972V13.4308C1.96822 13.2175 1.85401 10.6127 1.854 9.07467C1.854 8.5825 1.86156 7.52185 1.94689 4.36472C2.03222 1.20758 4.32614 0.898273 5.46667 0.898269H16.4526C20.9324 0.73828 19.8771 4.379 19.9876 8.66035C20.083 12.3589 18.5375 13.3146 16.383 13.3146L11.4396 13.4308C10.7463 14.1419 9.00778 16.0862 7.22656 17.8039C5.65198 19.3223 5.46667 19.0875 5.46667 18.4972Z"></path>
     <path stroke="#FF6B51" stroke-width=".15" d="M5.46667 18.4972V13.4308C1.96822 13.2175 1.85401 10.6127 1.854 9.07467C1.854 8.5825 1.86156 7.52185 1.94689 4.36472C2.03222 1.20758 4.32614 0.898273 5.46667 0.898269H16.4526C20.9324 0.73828 19.8771 4.379 19.9876 8.66035C20.083 12.3589 18.5375 13.3146 16.383 13.3146L11.4396 13.4308C10.7463 14.1419 9.00778 16.0862 7.22656 17.8039C5.65198 19.3223 5.46667 19.0875 5.46667 18.4972Z"></path>
@@ -101,12 +101,12 @@ module PagesHelper
   </defs>
 </svg>'
 
-    }, {
-      title: 'Doc & Files',
-      card_type: 'doc_and_file',
-      description: 'Centralized place to organized and share docs, spreadsheets, images and other files',
-      link: annoucements_path,
-      svg: '<svg id="SvgjsSvg1016" width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1017"></defs><g id="SvgjsG1018"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100" height="100"><path fill="#a1eebd" d="M3.757 0C2.79 0 2.003.787 2.003 1.754V12.27c0 .967.787 1.751 1.754 1.751h4.515c.007 0 .012-.006.02-.007a3.254 3.254 0 0 0 2.982 1.963 3.254 3.254 0 0 0 3.25-3.25 3.254 3.254 0 0 0-2.021-3.004V4.27c0-.008-.007-.014-.008-.023a.246.246 0 0 0-.064-.176l-4-4c-.052-.05-.122-.063-.192-.06C8.23.01 8.222 0 8.212 0H3.757Zm0 .5h4.246v2.262c0 .959.781 1.738 1.74 1.738h2.26v5.066a3.187 3.187 0 0 0-.729-.09 3.254 3.254 0 0 0-3.25 3.25c0 .277.045.54.11.795H3.757a1.256 1.256 0 0 1-1.254-1.253V1.754C2.503 1.063 3.066.5 3.757.5Zm4.746.393L11.628 4H9.74a1.24 1.24 0 0 1-1.238-1.238V.892zm2.77 9.084a2.753 2.753 0 0 1 2.75 2.75 2.752 2.752 0 0 1-2.75 2.75 2.752 2.752 0 0 1-2.75-2.75 2.753 2.753 0 0 1 2.75-2.75zM11 11.23v1.245H9.755v.5H11v1.248h.5v-1.248h1.246v-.5h-1.246V11.23h-.5z" class="color231f20 svgShape"></path></svg></g></svg>'
-    }]
+     }, {
+       title: 'Doc & Files',
+       card_type: 'doc_and_file',
+       description: 'Centralized place to organized and share docs, spreadsheets, images and other files',
+       link: annoucements_path,
+       svg: '<svg id="SvgjsSvg1016" width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1017"></defs><g id="SvgjsG1018"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="100" height="100"><path fill="#a1eebd" d="M3.757 0C2.79 0 2.003.787 2.003 1.754V12.27c0 .967.787 1.751 1.754 1.751h4.515c.007 0 .012-.006.02-.007a3.254 3.254 0 0 0 2.982 1.963 3.254 3.254 0 0 0 3.25-3.25 3.254 3.254 0 0 0-2.021-3.004V4.27c0-.008-.007-.014-.008-.023a.246.246 0 0 0-.064-.176l-4-4c-.052-.05-.122-.063-.192-.06C8.23.01 8.222 0 8.212 0H3.757Zm0 .5h4.246v2.262c0 .959.781 1.738 1.74 1.738h2.26v5.066a3.187 3.187 0 0 0-.729-.09 3.254 3.254 0 0 0-3.25 3.25c0 .277.045.54.11.795H3.757a1.256 1.256 0 0 1-1.254-1.253V1.754C2.503 1.063 3.066.5 3.757.5Zm4.746.393L11.628 4H9.74a1.24 1.24 0 0 1-1.238-1.238V.892zm2.77 9.084a2.753 2.753 0 0 1 2.75 2.75 2.752 2.752 0 0 1-2.75 2.75 2.752 2.752 0 0 1-2.75-2.75 2.753 2.753 0 0 1 2.75-2.75zM11 11.23v1.245H9.755v.5H11v1.248h.5v-1.248h1.246v-.5h-1.246V11.23h-.5z" class="color231f20 svgShape"></path></svg></g></svg>'
+     }]
   end
 end

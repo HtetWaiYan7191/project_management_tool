@@ -12,5 +12,5 @@ class Message < ApplicationRecord
   validates :department, presence: true
   validates :content, presence: true
 
-  after_create_commit { broadcast_before_to department, target: "anchor" }
+  after_create_commit { broadcast_before_to department, target: 'anchor' }
 end

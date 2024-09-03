@@ -1,25 +1,24 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-# resources :to_dos do 
-#   resources :to_do_lists do
-#     get 'edit', to: 'to_do_lists#edit', defaults: { format: :turbo_stream }, on: :member
-#   end
-# end
+  # resources :to_dos do
+  #   resources :to_do_lists do
+  #     get 'edit', to: 'to_do_lists#edit', defaults: { format: :turbo_stream }, on: :member
+  #   end
+  # end
 
-resources :to_dos do 
-   member do 
-    patch :update_status, to: 'to_dos#update_status'
-   end
-    resources :to_do_lists do 
+  resources :to_dos do
     member do
-      get :hide_edit, to: 'to_do_lists#hide_edit'
-      patch :update_status, to: 'to_do_lists#update_status'
+      patch :update_status, to: 'to_dos#update_status'
+    end
+    resources :to_do_lists do
+      member do
+        get :hide_edit, to: 'to_do_lists#hide_edit'
+        patch :update_status, to: 'to_do_lists#update_status'
+      end
     end
   end
-end
 
-  
   get 'profile/edit'
   patch 'profile/update'
 
