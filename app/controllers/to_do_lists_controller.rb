@@ -37,7 +37,8 @@ end
     if @to_do_list.save
       redirect_to to_do_path(@to_do), notice: 'ToDo List was successfully created.'
     else
-     redirect_to to_do_path(@to_do), status: :unprocessable_entity
+    flash.now[:alert] = @to_do_list.errors.full_messages.join(',')
+     render 'to_dos/show'
     end
   end
 
@@ -46,7 +47,8 @@ end
     if @to_do_list.update(to_do_list_params)
       redirect_to to_do_path(@to_do), notice: 'ToDo List was successfully updated.'
     else
-      render :edit, status: :unprocessable_entity
+      flash.now[:alert] = @to_do_list.errors.full_messages.join(',')
+      render "to_dos/show"
     end
   end
 

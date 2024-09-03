@@ -6,7 +6,7 @@ class ToDoList < ApplicationRecord
 
   validates :to_do, presence: true
   validates :creator, presence: true
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, presence: true, length: { maximum: 50 }
   validate :date_cannot_be_in_the_past
 
   def date_cannot_be_in_the_past
