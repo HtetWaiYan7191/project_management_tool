@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1 or /boards/1.json
   def show
-    @lists = @board.lists
+    
   end
 
   # GET /boards/new

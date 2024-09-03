@@ -2,9 +2,10 @@
     <div class="header  border p-3 rounded" style="background-color: rgba(<%= list.color[1..-1].scan(/../).map { |c| c.to_i(16) }.join(', ') %>, 0.4);">
         <div class="d-flex justify-content-between align-items-center m-2">
             <h6 class="fw-semibold"><%= list.title %><span class="text-muted">(<%= list.cards.count %>)</span></h6>
-            <%= render partial: 'shared/drop_down', locals: {edit_path: edit_board_list_path(@board, list), destroy_path: board_list_path(list)}%>
+            <%= render partial: 'shared/drop_down', locals: {edit_path: edit_board_list_path(@board, list),
+             destroy_path: board_list_path(list),  title: "Add a new card to #{list.title}", modal_form: render('cards/form', list: list, card: Card.new)}%>
         </div>
-
+    
         <div class="border mt-3" style=" height: 70px">
             
         </div>

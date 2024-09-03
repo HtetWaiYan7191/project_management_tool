@@ -5,7 +5,12 @@ Rails.application.routes.draw do
     member do
       patch "/lists/:list_id/reorder_list", to: 'boards#reorder_lists', as: :reorder_lists
     end
-    resources :lists 
+    resources :lists do 
+    end
+  end
+
+  resources :lists do 
+    resources :cards 
   end
   # resources :to_dos do
   #   resources :to_do_lists do

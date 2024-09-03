@@ -1,10 +1,9 @@
 
-  <% if @board.lists.empty?%>
+  <% if @board.lists.empty? %>
     <div class="border-3 border-dashed  border-warning p-4 w-50 d-flex gap-5 bg-warning d-flex flex-column  align-items-center mx-auto mt-4 ">
       <p class="text-muted fw-bold">No lists yet...</p>
       <%= render 'board_modal'%>
     </div>
-
   <% else %>
     <div class="container position-relative" style="margin-top: 5rem;">
       <div class="list-container row p-2" data-controller="sortable" data-sortable-animation-value="150">
@@ -16,7 +15,6 @@
         </div>
       </div>
     </div>
-    <%#= render @board %>
   <% end %>
 
 <div class="d-none">

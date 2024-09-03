@@ -21,6 +21,7 @@
             <%= form.label :note, "Notes", class: "form-label" %>
             <%= form.text_field :note, class: 'form-control', placeholder: "Add extra details"%>
           </div>
+          
             <div class="px-3 py-4">
               <%= form.submit class: 'btn btn-secondary me-3' %>
               <% unless to_do_list.persisted? %>

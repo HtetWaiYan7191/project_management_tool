@@ -1,0 +1,29 @@
+<%= form_with(model: [list, card]) do |form| %>
+  <% if card.errors.present? %>
+    <p><%= card.errros.full_messages.join(',') %></p>
+  <% end %>
+  <div class="d-flex align-items-center gap-4 mt-3">
+    <%= form.label :title, class: 'form-label', style: 'min-width: 120px' %>
+    <%= form.text_field :title, class: 'form-control', placeholder: 'Type a card title...' %>
+  </div>
+
+    <div class="d-flex align-items-center gap-4 mt-3">
+        <%= form.label :assigned_user_ids, "Assigned to", class: 'form-label', style: 'min-width: 120px' %>
+        <%= form.select :assigned_user_ids, current_department.users.pluck(:full_name, :id), { multiple: true, class: 'form-control' }, {data: {controller: 'slim-select'}} %>
+    </div>
+
+  <div class="d-flex align-items-center gap-4 mt-3">
+      <%= form.label :due_date, "Due On", class: 'form-label', style: 'min-width: 120px' %>
+      <div data-controller="flatpickr">
+          <%= form.text_field :due_date, class: 'form-control', placeholder: 'Select a date...', data: { flatpickr_target: "input" } %>
+      </div>
+  </div>
+
+  <div class="border mt-3" style="min-height: 250px">
+    <%= form.rich_text_area  :description, class: 'border-0 p-3', placeholder: 'Describe your card here...'%>
+  </div>
+
+  <div class="mt-4">
+    <%= form.submit "Create", class: 'btn btn-primary' %>
+  </div>
+<% end %>
