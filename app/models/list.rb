@@ -9,5 +9,4 @@ class List < ApplicationRecord
 
   validates :board, presence: true
   validates :title, presence: true, length: { maximum: 50 }
-  validates :position, numericality: { only_integer: true }
 end

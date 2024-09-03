@@ -1,4 +1,5 @@
   <section class=" py-5">
+    <% if @grouped_annoucements.present? %>
             <% @grouped_annoucements.each do |date, annoucements| %>
                     <% if date == Date.today %>
                         <h3 class="fw-bold  ps-5 pb-3">Today</h3>
@@ -35,5 +36,11 @@
                         </div>
                     </div>
             <% end %>
+    <% else %>  
+        <div class="d-flex justify-content-center align-items-center">
+            <%= render 'shared/no_data', title: 'No Annoucements Yet', 
+            description: 'Post Annoucement, pitch ideas and gather feedback while keeping discussions organized and on-topic' %>
+        </div>
+    <% end %>   
     </section>
 <%#= render partial: 'annoucements', locals: {annoucements: @annoucements} %>

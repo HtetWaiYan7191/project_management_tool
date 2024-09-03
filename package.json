@@ -17,7 +17,9 @@
     "@kanety/stimulus-multi-select": "^1.1.0",
     "@popperjs/core": "^2.11.8",
     "@rails/actiontext": "^7.2.0",
+    "@rails/request.js": "^0.0.9",
     "@stimulus-components/notification": "^3.0.0",
+    "@stimulus-components/sortable": "^5.0.1",
     "autoprefixer": "^10.4.20",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
@@ -27,6 +29,7 @@
     "postcss-cli": "^11.0.0",
     "sass": "^1.77.8",
     "slim-select": "^2.8.2",
+    "sortablejs": "^1.15.3",
     "trix": "^2.1.5"
   },
   "browserslist": [

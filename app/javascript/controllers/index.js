@@ -30,3 +30,9 @@ application.register("to-do-list-edit", ToDoListEditController)
 
 import ToDoListUpdateStatusController from "./to_do_list_update_status_controller"
 application.register("to-do-list-update-status", ToDoListUpdateStatusController)
+
+import TurboModalController from "./turbo_modal_controller"
+application.register("turbo-modal", TurboModalController)
+
+import Sortable from "@stimulus-components/sortable";
+application.register("sortable", Sortable);

@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :boards do 
+    member do
+      patch "/lists/:list_id/reorder_list", to: 'boards#reorder_lists', as: :reorder_lists
+    end
+    resources :lists 
+  end
   # resources :to_dos do
   #   resources :to_do_lists do
   #     get 'edit', to: 'to_do_lists#edit', defaults: { format: :turbo_stream }, on: :member

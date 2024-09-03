@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include CommonConcern
   before_action :authenticate_user!
   set_current_tenant_through_filter
   before_action :set_tenant, unless: :devise_controller?
