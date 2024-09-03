@@ -1,0 +1,14 @@
+    <div class="dropdown">
+        <button class="btn rounded-circle border border-black" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-three-dots"></i>
+        </button>
+        <ul class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton1">
+            <li>
+                <%= link_to "Edit", edit_path, class: 'dropdown-item' %>
+            </li>
+
+            <li>
+                <%= link_to "Destroy", destroy_path, method: :delete, class: 'dropdown-item' %>
+            </li>
+        </ul>
+    </div>
