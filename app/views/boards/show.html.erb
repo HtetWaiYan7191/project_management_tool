@@ -8,7 +8,7 @@
     <div class="container-fluid position-relative" style="margin-top: 5rem;">
       <div class="list-container row p-2" data-controller="sortable">
         <% @board.lists.each do |list| %>
-          <%= render partial: 'lists/list', locals: {list: list} %>
+          <%= render partial: 'lists/list', locals: {list: list, board: @board} %>
         <% end %>
         <div class="position-absolute d-flex justify-content-end" style="top: -42px;">
           <%= render 'board_modal'%>

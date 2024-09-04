@@ -1,4 +1,4 @@
-<div class=" col-3" data-sortable-update-url="<%= reorder_lists_board_path(@board, list_id: list.id) %>">
+<div class=" col-3"  data-sortable-id="<%= list.id %>" data-sortable-update-url="<%= reorder_lists_board_path(@board, list) %>">
     <div class="header  border p-3 rounded" style="background-color: rgba(<%= list.color[1..-1].scan(/../).map { |c| c.to_i(16) }.join(', ') %>, 0.4);">
         <div class="d-flex justify-content-between align-items-center m-2">
             <h6 class="fw-semibold"><%= list.title %><span class="text-muted">(<%= list.cards.count %>)</span></h6>
