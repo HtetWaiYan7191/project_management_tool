@@ -7,10 +7,9 @@ class ListsController < ApplicationController
   end
   
   def reorder_cards
-    puts 'reorder cards is working'
     card = @list.cards.find(params[:card_id])
+    card.update(list_id: params[:new_list_id])
     card.insert_at(params[:position].to_i)
-    puts 'card insert finished'
     head :ok
   end
 

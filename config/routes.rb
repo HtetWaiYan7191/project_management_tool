@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :lists do 
     member do 
-      patch "/cards/:card_id/reorder_cards", to: 'lists#reorder_cards', as: :reorder_cards
+      put "/cards/:card_id/reorder_cards", to: 'lists#reorder_cards', as: :reorder_cards
     end
     resources :cards 
   end

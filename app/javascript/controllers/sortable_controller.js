@@ -3,24 +3,26 @@ import Sortable from "sortablejs";
 import { put } from "@rails/request.js";
 // Connects to data-controller="sortable"
 export default class extends Controller {
+  static values = {group: String}
   connect() {
     Sortable.create(this.element, {
-      animation: 150,
+      animation: 100,
       onEnd: this.end.bind(this),
+      group: this.groupValue,
     });
   }
 
   end(event) {
-    const listId = event.item.dataset.sortableId
-    const newPosition = event.newIndex
     const sortableUpdateUrl = event.item.dataset.sortableUpdateUrl
-    console.log(sortableUpdateUrl)
-       put(sortableUpdateUrl, {
+
+    var sortableListId = event.to.dataset.sortableListId;
+    console.log(sortableListId)
+    console.log(event.newIndex + 1)
+       put(sortableUpdateUrl, { 
          body: JSON.stringify({
            position: event.newIndex + 1,
-           list_id: listId,
+           new_list_id: sortableListId 
          }),
        });
-    
   }
 }

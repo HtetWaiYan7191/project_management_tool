@@ -6,7 +6,7 @@
     </div>
   <% else %>
     <div class="container-fluid position-relative" style="margin-top: 5rem;">
-      <div class="list-container row p-2" data-controller="sortable">
+      <div class="list-container d-flex flex-nowrap gap-4 p-2 overflow-auto" data-controller="sortable">
         <% @board.lists.each do |list| %>
           <%= render partial: 'lists/list', locals: {list: list, board: @board} %>
         <% end %>

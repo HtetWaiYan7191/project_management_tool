@@ -7,7 +7,6 @@ class BoardsController < ApplicationController
   end
 
   def reorder_lists
-    puts "reorder list is working"
     list = @board.lists.find(params[:list_id])
     list.insert_at(params[:position].to_i)
     head :ok

@@ -1,11 +1,12 @@
+<% list ||= @list %>
 <div class="dropdown">
-  <button class="btn rounded-circle border border-black" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-sm rounded-circle border border-black" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     <i class="bi bi-three-dots"></i>
   </button>
   <ul class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton1">
     <li>
       <!-- Button to trigger the modal -->
-      <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addCardModal">
+      <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addCardModal<%= list.id %>">
         Add Card
       </button>
     </li>
@@ -13,17 +14,17 @@
       <%= link_to "Edit", edit_path, class: 'dropdown-item' %>
     </li>
     <li>
-      <%= link_to "Destroy", destroy_path, method: :delete, class: 'dropdown-item' %>
+      <%= button_to "Destroy", destroy_path, method: :delete, class: 'dropdown-item' %>
     </li>
   </ul>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="addCardModal" tabindex="-1" aria-labelledby="addCardModalLabel" aria-hidden="true">
+<div class="modal fade" id="addCardModal<%= list.id %>" tabindex="-1" aria-labelledby="addCardModalLabel<%= list.id %>" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body p-4">
-        <h5 class="fw-bold"><%= title %></h5>
+        <h5 class="fw-bold"><%= title %> <%= list.id %></h5>
         <%=  modal_form %>
       </div>
     </div>
