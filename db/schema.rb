@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_03_093552) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_04_030117) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +95,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_093552) do
     t.date "due_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "creator_id", null: false
+    t.index ["creator_id"], name: "index_cards_on_creator_id"
     t.index ["list_id"], name: "index_cards_on_list_id"
   end
 
@@ -237,6 +239,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_03_093552) do
   add_foreign_key "boards", "companies"
   add_foreign_key "boards", "users", column: "creator_id"
   add_foreign_key "cards", "lists"
+  add_foreign_key "cards", "users", column: "creator_id"
   add_foreign_key "comments", "users"
   add_foreign_key "departments", "companies"
   add_foreign_key "doc_and_files", "companies"

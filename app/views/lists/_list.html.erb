@@ -7,9 +7,11 @@
         </div>
 
             <% if list.cards.present?%>
+            <div class="d-flex flex-column gap-3 mt-3 ">
                 <% list.cards.each do |card| %>
-                    <%= render partial: 'cards/card', locals: {card: card} %>
+                    <%= render partial: 'cards/card', locals: {card: card, list: list} %>
                 <% end %>
+            </div>
             <% else %>
                 <div class="border mt-3" style=" height: 70px">
                 </div>

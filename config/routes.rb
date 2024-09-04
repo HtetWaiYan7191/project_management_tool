@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   end
 
   resources :lists do 
+    member do 
+      patch "/cards/:card_id/reorder_cards", to: 'lists#reorder_cards', as: :reorder_cards
+    end
     resources :cards 
   end
   # resources :to_dos do

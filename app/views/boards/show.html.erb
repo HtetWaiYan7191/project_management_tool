@@ -5,8 +5,8 @@
       <%= render 'board_modal'%>
     </div>
   <% else %>
-    <div class="container position-relative" style="margin-top: 5rem;">
-      <div class="list-container row p-2" data-controller="sortable" data-sortable-animation-value="150">
+    <div class="container-fluid position-relative" style="margin-top: 5rem;">
+      <div class="list-container row p-2" data-controller="sortable">
         <% @board.lists.each do |list| %>
           <%= render partial: 'lists/list', locals: {list: list} %>
         <% end %>

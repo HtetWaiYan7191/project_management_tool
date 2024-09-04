@@ -1,9 +1,17 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: %i[ show edit update destroy ]
-  before_action :set_board
+  before_action :set_list, only: %i[ show edit update destroy reorder_cards ]
+  before_action :set_board, except: %i[reorder_cards]
   # GET /lists or /lists.json
   def index
     @lists = List.all
+  end
+  
+  def reorder_cards
+    puts 'reorder cards is working'
+    card = @list.cards.find(params[:card_id])
+    card.insert_at(params[:position].to_i)
+    puts 'card insert finished'
+    head :ok
   end
 
   # GET /lists/1 or /lists/1.json

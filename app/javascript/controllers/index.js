@@ -22,6 +22,9 @@ application.register("message", MessageController)
 import SlimSelectController from "./slim_select_controller"
 application.register("slim-select", SlimSelectController)
 
+import SortableController from "./sortable_controller"
+application.register("sortable", SortableController)
+
 import ToDoAddNestedFormController from "./to_do_add_nested_form_controller"
 application.register("to-do-add-nested-form", ToDoAddNestedFormController)
 
@@ -33,6 +36,3 @@ application.register("to-do-list-update-status", ToDoListUpdateStatusController)
 
 import TurboModalController from "./turbo_modal_controller"
 application.register("turbo-modal", TurboModalController)
-
-import Sortable from "@stimulus-components/sortable";
-application.register("sortable", Sortable);

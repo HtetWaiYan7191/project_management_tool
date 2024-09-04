@@ -72,6 +72,6 @@ class CardsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def card_params
-      params.require(:card).permit(:title, :due_date, :description, assigned_user_ids: []).merge(list: @list)
+      params.require(:card).permit(:title, :due_date, :description, :position, assigned_user_ids: []).merge(list: @list, creator_id: current_user.id)
     end
 end
