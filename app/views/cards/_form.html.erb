@@ -1,7 +1,8 @@
-<%= form_with(model: [list, card]) do |form| %>
-  <% if card.errors.present? %>
-    <p><%= card.errros.full_messages.join(',') %></p>
-  <% end %>
+<%= form_with(model: [list, card], local:false, data: { controller: 'cards', action: 'submit->cards#submit' }) do |form| %>
+  <input type="hidden" name="board_id" value="<%= list.board.id %>">
+    <div data-cards-target="errorContainer" class="p-3 d-none bg-danger bg-opacity-25">
+      <p class="fw-semibold" data-cards-target="errorText">error</p>
+    </div>
   <div class="d-flex align-items-center gap-4 mt-3">
     <%= form.label :title, class: 'form-label', style: 'min-width: 120px' %>
     <%= form.text_field :title, class: 'form-control', placeholder: 'Type a card title...' %>
@@ -24,7 +25,11 @@
   </div>
 
   <div class="mt-4">
-    <%= form.submit "Add Card", class: 'btn btn-secondary' %>
+      <% if card.persisted? %>
+    <%= form.submit "Update Card", class: 'btn btn-secondary' %>
+    <% else %>
+      <%= form.submit "Add Card", class: 'btn btn-secondary' %>
+    <% end %>
     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
       Cancel
     </button>

@@ -1,16 +1,33 @@
-<div id="<%= dom_id card %>"  data-sortable-id="<%= card.id %>" data-sortable-update-url="<%= reorder_cards_list_path(list, card) %>"
+<button type="button" data-bs-toggle="modal" data-bs-target="#editCardModal<%= card.id %>" 
+data-sortable-id="<%= card.id %>" data-sortable-update-url="<%= reorder_cards_list_path(list, card) %>"
   class="bg-white p-2 rounded">
-  <div class="d-flex justify-content-between">
-    <p class="fw-semibold"><%= card.title %></p>
-    <%= card.assigned_users.count %>
-  </div>
+    <div class="d-flex justify-content-between">
+      <p class="fw-semibold"><%= card.title %></p>
+      <div class="user-icon-container position-relative me-2" style="width:30px; height:30px">
+        <% card.assigned_users.each_with_index do |user, index| %>
+          <%= image_tag user.avatar_icon, style: "height:30px; width:30px; object-fit:cover; position: absolute; left: #{index * 10}px; top: 0;", class: 'rounded-circle' %>
+        <% end %>
+      </div>
+    </div>
 
-  <div class="mt-2">
-    <p class="text-muted fw-semibold d-flex flex-wrap gap-2 justify-content-between align-items-center" style="font-size: 12px">
-      <small> By <%= card.creator.full_name%>   <%= time_ago_in_words(card.created_at) + ' ago'%></small>
-      <i class=" bi bi-calendar-event text-danger">
-        <%= format_time(card.created_at)%>
-      </i> 
-    </p>
+    <div class="mt-2">
+      <p class="text-muted fw-semibold d-flex flex-wrap gap-2 justify-content-between align-items-center" style="font-size: 12px">
+        <small> By <%= card.creator.full_name%>   <%= time_ago_in_words(card.created_at) + ' ago'%></small>
+        <i class=" bi bi-calendar-event text-danger">
+          <%= format_time(card.created_at)%>
+        </i> 
+      </p>
+    </div>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editCardModal<%= card.id %>" tabindex="-1" aria-labelledby="editCardModalLabel<%= card.id %>" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body p-4">
+        <h5 class="fw-bold"><%= card.title %></h5>
+        <%= render partial: 'cards/form', locals: {list:, card:}%>
+      </div>
+    </div>
   </div>
 </div>

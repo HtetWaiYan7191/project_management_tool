@@ -11,7 +11,10 @@
       </button>
     </li>
     <li>
-      <%= link_to "Edit", edit_path, class: 'dropdown-item' %>
+      <%#= link_to "Edit", edit_path, class: 'dropdown-item' %>
+      <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal<%= list.id %>">
+        Edit
+      </button>
     </li>
     <li>
       <%= button_to "Destroy", destroy_path, method: :delete, class: 'dropdown-item' %>
@@ -24,8 +27,20 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body p-4">
-        <h5 class="fw-bold"><%= title %> <%= list.id %></h5>
+        <h5 class="fw-bold"><%= title %></h5>
         <%=  modal_form %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal-->
+<div class="modal fade" id="editModal<%= list.id %>" tabindex="-1" aria-labelledby="editModalLabel<%= list.id %>" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body p-4">
+        <h5 class="fw-bold">Edit <%= list.title %></h5>
+        <%= render partial: 'lists/form', locals: {board:, list:}%>
       </div>
     </div>
   </div>

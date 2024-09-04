@@ -1,4 +1,4 @@
-
+<% @board ||= Board.find(params[:id])%>
   <% if @board.lists.empty? %>
     <div class="border-3 border-dashed  border-warning p-4 w-50 d-flex gap-5 bg-warning d-flex flex-column  align-items-center mx-auto mt-4 ">
       <p class="text-muted fw-bold">No lists yet...</p>
@@ -11,7 +11,7 @@
           <%= render partial: 'lists/list', locals: {list: list, board: @board} %>
         <% end %>
         <div class="position-absolute d-flex justify-content-end" style="top: -42px;">
-          <%= render 'board_modal'%>
+          <%= render 'boards/board_modal'%>
         </div>
       </div>
     </div>

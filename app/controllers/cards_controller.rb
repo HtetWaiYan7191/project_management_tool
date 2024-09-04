@@ -39,13 +39,14 @@ class CardsController < ApplicationController
 
   # PATCH/PUT /cards/1 or /cards/1.json
   def update
-    respond_to do |format|
-      if @card.update(card_params)
-        format.html { redirect_to card_url(@card), notice: "Card was successfully updated." }
-        format.json { render :show, status: :ok, location: @card }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
+    if @card.update(card_params)
+       flash[:notice] = "Card was successfully updated."
+      respond_to do |format|
+        format.json { render json: { redirect_url: board_path(@list.board)}, status: :ok }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: @card.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end

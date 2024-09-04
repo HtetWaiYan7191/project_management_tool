@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CardsController from "./cards_controller"
+application.register("cards", CardsController)
+
 import ChooseDepartmentsController from "./choose_departments_controller"
 application.register("choose-departments", ChooseDepartmentsController)
 
