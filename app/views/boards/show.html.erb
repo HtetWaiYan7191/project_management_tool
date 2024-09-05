@@ -6,11 +6,11 @@
     </div>
   <% else %>
     <div class="container-fluid position-relative" style="margin-top: 5rem;">
-      <div class="list-container d-flex flex-nowrap gap-4 p-2 overflow-auto" data-controller="sortable">
+      <div class="list-container d-flex flex-nowrap gap-4 p-2 overflow-auto" data-controller="sortable" style="min-height:500px">
         <% @board.lists.each do |list| %>
           <%= render partial: 'lists/list', locals: {list: list, board: @board} %>
         <% end %>
-        <div class="position-absolute d-flex justify-content-end" style="top: -42px;">
+        <div class="position-absolute  d-flex justify-content-end" style="top: -42px;">
           <%= render 'boards/board_modal'%>
         </div>
       </div>

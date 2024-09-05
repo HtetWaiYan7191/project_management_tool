@@ -3,9 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = ["errorContainer", "errorText"];
-  connect() {
-    console.log(this.toastTarget);
-  }
+
   submit(event) {
     event.preventDefault(); // Prevent the default form submission
     const formData = new FormData(this.element);
@@ -20,7 +18,6 @@ export default class extends Controller {
       },
     })
       .then((response) => {
-        console.log(response)
         if (response.ok) {
           return response.json();
         } else {
@@ -32,8 +29,8 @@ export default class extends Controller {
         }
       })
       .then((data) => {
-        console.log("Redirecting to:", data.redirect_url); // Debugging line
         // Handle success (e.g., redirect or show a success message)
+        console.log(data.redirect_url)
         window.location.href = data.redirect_url; 
       })
       .catch((error) => {

@@ -6,7 +6,7 @@ export default class extends Controller {
   static values = {group: String}
   connect() {
     Sortable.create(this.element, {
-      animation: 100,
+      animation: 150,
       onEnd: this.end.bind(this),
       group: this.groupValue,
     });
@@ -16,8 +16,6 @@ export default class extends Controller {
     const sortableUpdateUrl = event.item.dataset.sortableUpdateUrl
 
     var sortableListId = event.to.dataset.sortableListId;
-    console.log(sortableListId)
-    console.log(event.newIndex + 1)
        put(sortableUpdateUrl, { 
          body: JSON.stringify({
            position: event.newIndex + 1,
