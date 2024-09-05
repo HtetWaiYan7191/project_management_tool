@@ -4,6 +4,8 @@ class BoardsController < ApplicationController
   # GET /boards or /boards.json
   def index
     @boards = Board.all
+    redirect_to board_path(Board.first) if @boards.count > 1  
+    return
   end
 
   def reorder_lists

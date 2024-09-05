@@ -1,14 +1,7 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Boards</h1>
-
-<div id="boards">
-  <% @boards.each do |board| %>
-    <%= render board %>
-    <p>
-      <%= link_to "Show this board", board %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New board", new_board_path %>
+<% unless @boards.present?  %>
+        <div  class="border-3 border-dashed  border-warning p-4 w-50 d-flex gap-5 bg-warning d-flex flex-column  align-items-center mx-auto mt-4 ">
+        <p class="text-muted fw-bold">No lists yet...</p>
+        <%= render partial: 'shared/form_modal', locals: {content: 'Add Board', target: 'addBoardIndex', 
+        form: render('boards/form', board: Board.new)}%>
+      </div>
+<% end %>
