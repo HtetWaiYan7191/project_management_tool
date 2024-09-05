@@ -1,0 +1,9 @@
+<div id="pager" class="text-center mt-4">
+  <% if next_page %>
+    <%= link_to "Load More Messages",
+        messages_path( page: next_page),
+        class: "btn btn-primary",
+        data: { turbo_stream: true }
+         %>
+  <% end %>
+</div>

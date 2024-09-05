@@ -1,0 +1,13 @@
+<!-- Prepend new messages to the message list -->
+    <%= turbo_stream.prepend "messages-list" do %>
+    <%= render partial: 'messages/messages', locals: { messages: @messages } %>
+    <% end %>
+
+    <!-- Update or remove the Load More button -->
+    <%= turbo_stream.replace "pager" do %>
+    <%= render partial: "messages/pager", locals: {next_page: @next_page} %>
+    <% end %>
+
+<%# turbo stream is not working because i am using with a link . turbo stream not working with 
+link and get method  %>
+

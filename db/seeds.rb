@@ -15,4 +15,3 @@
 
 # Department.create(name: 'department1', company: Company.first)
 # Department.create(name: 'department2', company: Company.second)
-

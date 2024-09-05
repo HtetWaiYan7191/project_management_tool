@@ -8,18 +8,22 @@
   <!-- Attach data-controller="message" to the outer container -->
   <div  class="d-flex flex-column" >
     <!-- Container for messages -->
-    <div id="messages" class="d-flex flex-column gap-3 p-5 message-container" data-controller="message" data-message-target="messagesContainer" >
-      <% if @messages.any? %>
-        <% @messages.each do |message| %>
-          <%= render message %>
+    <div id="messages" data-controller="message" data-message-target="messagesContainer" >
+
+        <% if @messages.any? %>
+          <%= render "messages/pager", next_page: @next_page %>
+
+            <div id="messages-list" class="d-flex flex-column gap-3 p-5 message-container">
+              <%= render partial: 'messages', locals: {messages: @messages} %>
+              <div id="anchor" class=""></div>
+            </div>
+
+        <% else %>
+          <!-- Placeholder for no messages -->
+          <div class="d-flex justify-content-center">
+            <%= render 'shared/no_data', title: 'No Messages Yet', description: 'Chat casually with people, ask questions, connect with your team, and share news without ceremony' %>
+          </div>
         <% end %>
-      <% else %>
-        <!-- Placeholder for no messages -->
-        <div class="d-flex justify-content-center">
-          <%= render 'shared/no_data', title: 'No Messages Yet', description: 'Chat casually with people, ask questions, connect with your team, and share news without ceremony' %>
-        </div>
-      <% end %>
-        <div id="anchor" class=""></div>
     </div>
 
     <!-- Message form -->

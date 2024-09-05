@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :boards do 
+  resources :boards do
     member do
-      put "/lists/:list_id/reorder_list", to: 'boards#reorder_lists', as: :reorder_lists
+      put '/lists/:list_id/reorder_list', to: 'boards#reorder_lists', as: :reorder_lists
     end
-    resources :lists do 
+    resources :lists do
     end
   end
 
-  resources :lists do 
-    member do 
-      put "/cards/:card_id/reorder_cards", to: 'lists#reorder_cards', as: :reorder_cards
+  resources :lists do
+    member do
+      put '/cards/:card_id/reorder_cards', to: 'lists#reorder_cards', as: :reorder_cards
     end
-    resources :cards 
+    resources :cards
   end
   # resources :to_dos do
   #   resources :to_do_lists do

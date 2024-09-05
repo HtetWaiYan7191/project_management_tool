@@ -97,3 +97,6 @@ gem 'ransack'
 
 # Easy sorting
 gem 'acts_as_list'
+
+# pagination 
+gem 'kaminari'

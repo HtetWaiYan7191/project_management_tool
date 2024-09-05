@@ -20,7 +20,7 @@ module ApplicationHelper
   def to_do_page?
     request.path.include?('/to_dos') # Adjust the path as necessary
   end
-  
+
   def board_page?
     request.path.include?('/boards') # Adjust the path as necessary
   end
@@ -32,5 +32,4 @@ module ApplicationHelper
   def change_password_page
     request.path == '/users/edit' ? 'active' : ''
   end
-
 end

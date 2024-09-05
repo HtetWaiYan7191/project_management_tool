@@ -5,7 +5,13 @@ class MessagesController < ApplicationController
 
   # GET /messages or /messages.json
   def index
-    @messages = current_department.messages.includes(:user).all
+    @messages = current_department.messages.includes(:user).order(created_at: :asc).page(page).per(8)
+    @next_page = @messages.next_page
+    puts " request format => #{ request.format}"
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
   end
 
   # GET /messages/1 or /messages/1.json
@@ -25,10 +31,12 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        broadcast_message(@message)
         format.html { redirect_to message_url(@message), notice: 'Message was successfully created.' }
         format.turbo_stream
         format.json { render :show, status: :created, location: @message }
       else
+        puts @message.errors.full_messages.join(', ')
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
@@ -60,9 +68,27 @@ class MessagesController < ApplicationController
 
   private
 
+  # broadcast message
+  def broadcast_message(message)
+    Turbo::StreamsChannel.broadcast_before_to(
+      message.department,
+      target: 'anchor',
+      partial: 'messages/message',
+      locals: { message: }
+    )
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_message
     @message = Message.find(params[:id])
+  end
+
+  def page
+    params.fetch(:page, 1).to_i
+  end
+
+  def messages_target
+    params.fetch(:turbo_target, "messages-list")
   end
 
   # Only allow a list of trusted parameters through.
