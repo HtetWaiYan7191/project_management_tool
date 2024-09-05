@@ -1,6 +1,6 @@
 <button type="button" data-bs-toggle="modal" data-bs-target="#editCardModal<%= card.id %>" 
 data-sortable-id="<%= card.id %>" data-sortable-update-url="<%= reorder_cards_list_path(list, card) %>"
-  class="bg-white p-2 rounded">
+  class="bg-white p-2 rounded card-modal">
     <div class="d-flex justify-content-between">
       <p class="fw-semibold"><%= card.title %></p>
       <div class="user-icon-container position-relative me-2" style="width:30px; height:30px">
