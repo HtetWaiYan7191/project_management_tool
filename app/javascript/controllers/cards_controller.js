@@ -30,7 +30,6 @@ export default class extends Controller {
       })
       .then((data) => {
         // Handle success (e.g., redirect or show a success message)
-        console.log(data.redirect_url)
         window.location.href = data.redirect_url; 
       })
       .catch((error) => {

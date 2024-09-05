@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: %i[ show edit update destroy reorder_lists ]
+  before_action :set_board, only: %i[  edit update destroy reorder_lists ]
 
   # GET /boards or /boards.json
   def index
@@ -14,7 +14,8 @@ class BoardsController < ApplicationController
 
   # GET /boards/1 or /boards/1.json
   def show
-    
+    @board = Board.includes(:lists).find(params[:id])
+    @boards = Board.all
   end
 
   # GET /boards/new
@@ -32,11 +33,10 @@ class BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
-        format.html { redirect_to board_url(@board), notice: "Board was successfully created." }
-        format.json { render :show, status: :created, location: @board }
+        flash[:notice] = "Card was successfully created."
+        format.json { render json: { redirect_url: board_path(@board)}, status: :ok }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @board.errors, status: :unprocessable_entity }
+        format.json { render json: @board.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
