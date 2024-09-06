@@ -1,0 +1,15 @@
+<%= turbo_stream.append "comment-box" do %>
+    <%= render partial: 'comments/comments', locals: {comments: @comments}%>
+<% end %>
+
+<%= turbo_stream.replace "pager" do %>
+    <% if @next_page %>
+        <div id="pager" class="text-center my-4">
+            <%= link_to "Load More",
+                annoucement_path(@annoucement, page: @next_page),
+                class: "btn btn-primary",
+                data: { turbo_stream: true }
+                %>
+        </div>
+    <% end %>
+<% end %>

@@ -17,7 +17,15 @@ class AnnoucementsController < ApplicationController
   end
 
   # GET /annoucements/1 or /annoucements/1.json
-  def show; end
+  def show
+    @comments = @annoucement.comments.order(created_at: :desc).page(params[:page]).per(5)
+    @next_page = @comments.next_page 
+
+    respond_to do |format| 
+      format.turbo_stream
+      format.html
+    end
+  end
 
   # GET /annoucements/new
   def new
