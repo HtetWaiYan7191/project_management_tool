@@ -5,9 +5,9 @@ class MessagesController < ApplicationController
 
   # GET /messages or /messages.json
   def index
-    @messages = current_department.messages.includes(:user).order(created_at: :asc).page(page).per(8)
+    @messages = current_department.messages.includes(:user).order(created_at: :desc).page(page).per(20)
     @next_page = @messages.next_page
-    puts " request format => #{ request.format}"
+    @messages = @messages.reverse
     respond_to do |format|
       format.turbo_stream
       format.html
