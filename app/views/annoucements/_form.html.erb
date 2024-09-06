@@ -15,7 +15,7 @@
         </div>
 
         <div class="field mb-4">
-          <%= form.rich_text_area :content, data: {controller: "mentions"}, class: 'form-rich-text' %>
+          <%= form.rich_text_area :content, data: {controller: "mentions", target: 'mentions.field'}, class: 'form-rich-text' %>
         </div>
 
           <div data-controller="choose-departments">

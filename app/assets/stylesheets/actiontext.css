@@ -29,3 +29,13 @@
   padding: 0 !important;
   max-width: 100% !important;
 }
+
+trix-editor .attachment {
+  display: inline-block !important;
+}
+
+.trix-user-icon {
+  width: 30px;
+  height: 30px !important;
+  object-fit: cover;
+}

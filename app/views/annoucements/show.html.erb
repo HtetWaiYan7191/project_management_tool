@@ -35,22 +35,25 @@
           <%= @annoucement.content %>
       </div>
     <% end %>
-
-  <div class="comment-container pt-3 pb-5 mt-4">
-      <h3 class="p-2">Comments</h3>
-      <div id='comment-box' class="">
-        <%= render partial: 'comments/comments', locals: {comments: @comments}%>
-        <div id="pager" class="text-center mt-4">
-            <%= link_to "Load More",
-                annoucement_path( @annoucement, page: @next_page),
-                class: "btn btn-primary",
-                data: { turbo_stream: true }
-                %>
+    <div class="comment-container pt-3 pb-5 mt-4">
+        <h3 class="p-2">Comments</h3>
+  <% if @comments.present? %>
+        <div id='comment-box' class="">
+          <%= render partial: 'comments/comments', locals: {comments: @comments}%>
+          <% if @next_page.present? %>
+            <div id="pager" class="text-center mt-4">
+                <%= link_to "Load More",
+                    annoucement_path( @annoucement, page: @next_page),
+                    class: "btn btn-primary",
+                    data: { turbo_stream: true }
+                    %>
+            </div>
+          <% end %>
         </div>
-      </div>
-      <div class="comment-form mt-4">
-        <%= render 'comments/annoucement_comment_form', annoucement: @annoucement, comment: Comment.new %>
-      </div>
-  </div>
+  <% end %>
+        <div class="comment-form mt-4">
+          <%= render 'comments/annoucement_comment_form', annoucement: @annoucement, comment: Comment.new %>
+        </div>
+    </div>
 </section>
 <%# end %>

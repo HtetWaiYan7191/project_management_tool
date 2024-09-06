@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include ActionText::Attachable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -37,4 +38,9 @@ class User < ApplicationRecord
   def avatar_icon
     avatar.variant(resize_to_limit: [200, 200]).processed
   end
+
+    def avatar_url
+    Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true) if avatar.attached?
+  end
+
 end
