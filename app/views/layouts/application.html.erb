@@ -38,6 +38,9 @@
     <% elsif board_page? %>
         <%= render partial:'layouts/board_header', locals: {title: "Card Table", link: boards_path, new_link: new_board_path } %>
         <%= yield %>
+      <% elsif to_do_page? %>
+        <%= render partial:'layouts/board_header', locals: {title: "To Dos", link: to_dos_path, new_link: new_to_do_path } %>
+      <%= yield %>
     <% else %>
       <%= yield %>
     <% end %>

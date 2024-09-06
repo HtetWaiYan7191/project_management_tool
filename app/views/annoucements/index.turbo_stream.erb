@@ -1,0 +1,9 @@
+<%= turbo_stream.append "annoucement-container" do %>
+    <%= render partial: 'annoucements/annoucements', locals: {group_annoucements: @grouped_annoucements}%>
+<% end %>
+
+<%= turbo_stream.replace "loader" do %>
+    <% if @annoucements.next_page.present? %>
+        <%= turbo_frame_tag "loader", loading: :lazy, src: annoucements_path(page: @annoucements.next_page)%>
+    <% end %>
+<% end %>

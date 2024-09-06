@@ -6,9 +6,14 @@ class AnnoucementsController < ApplicationController
   # GET /annoucements or /annoucements.json
   def index
     @q = Annoucement.ransack(params[:q]) # Create the search object
-    @annoucements = @q.result.order(updated_at: :desc) # Execute the query
+    @annoucements = @q.result.order(updated_at: :desc).page(params[:page]).per(5) # Execute the query
 
     @grouped_annoucements = @annoucements.group_by { |a| a.created_at.to_date }
+
+    respond_to do |format| 
+      format.turbo_stream
+      format.html
+    end
   end
 
   # GET /annoucements/1 or /annoucements/1.json

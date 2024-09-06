@@ -50,11 +50,12 @@
       <% else %>
         <p class="text-muted fw-semibold">No due date</p>
       <% end %>
-      <%  to_do_list.assigned_users.each do |user| %>
-      <div class="d-flex gap-2 align-items-center ">
-        <%= render 'shared/user_icon', user: user%>
+
+      <div class="user-icon-container position-relative me-2" style="width:30px; height:30px">
+        <% to_do_list.assigned_users.each_with_index do |user, index| %>
+          <%= render partial: 'shared/overlay_icon', locals: {user:, index:}%>
+        <% end %>
       </div>
-      <% end %>
   </div>
 
     <%= turbo_frame_tag dom_id(to_do_list) do %>

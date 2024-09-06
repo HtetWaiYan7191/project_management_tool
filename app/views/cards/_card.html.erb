@@ -5,7 +5,7 @@ data-sortable-id="<%= card.id %>" data-sortable-update-url="<%= reorder_cards_li
       <p class="fw-semibold"><%= card.title %></p>
       <div class="user-icon-container position-relative me-2" style="width:30px; height:30px">
         <% card.assigned_users.each_with_index do |user, index| %>
-          <%= image_tag user.avatar_icon, style: "height:30px; width:30px; object-fit:cover; position: absolute; left: #{index * 10}px; top: 0;", class: 'rounded-circle' %>
+          <%= render partial: 'shared/overlay_icon', locals: {user:, index:}%>
         <% end %>
       </div>
     </div>
