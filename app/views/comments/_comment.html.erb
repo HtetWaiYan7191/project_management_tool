@@ -24,7 +24,8 @@
         <% end %>
 
         <% if can?(:destroy, comment) %>
-          <%= button_to 'Delete', annoucement_comment_path(@annoucement, comment), method: :delete, class: 'dropdown-item' %>
+          <%= button_to 'Delete', annoucement_comment_path(@annoucement, comment),
+           method: :delete, class: 'dropdown-item', data: { turbo: false } %>
         <% end %>
 
         <li><a class="dropdown-item" href="#">Something else here</a></li>
