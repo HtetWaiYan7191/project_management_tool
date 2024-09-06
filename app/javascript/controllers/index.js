@@ -19,6 +19,9 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MentionsController from "./mentions_controller"
+application.register("mentions", MentionsController)
+
 import MessageController from "./message_controller"
 application.register("message", MessageController)
 

@@ -6,7 +6,7 @@
                     New 
             <% end %>
         <% else %>
-            <% if request.path == '/messages'%>
+            <% if request.path == '/messages' || request.path.match?(/^\/boards\/\d+$/)%>
                 <%= link_to authenticated_root_path, class: 'btn btn-secondary d-flex gap-2 align-items-center' do %>
                     <i class="bi bi-arrow-left"></i> 
                     Back

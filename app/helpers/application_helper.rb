@@ -32,4 +32,8 @@ module ApplicationHelper
   def change_password_page
     request.path == '/users/edit' ? 'active' : ''
   end
+
+  def record_edited?(record)
+    record.updated_at > record.created_at 
+  end
 end
