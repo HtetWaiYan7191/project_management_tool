@@ -100,3 +100,9 @@ gem 'acts_as_list'
 
 # pagination 
 gem 'kaminari'
+
+# Calendar
+gem "simple_calendar"
+
+# Easy schedule expension
+gem "ice_cube"
