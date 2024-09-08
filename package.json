@@ -19,6 +19,7 @@
     "@rails/actiontext": "^7.2.0",
     "@rails/request.js": "^0.0.9",
     "@stimulus-components/notification": "^3.0.0",
+    "@stimulus-components/popover": "^7.0.0",
     "@stimulus-components/sortable": "^5.0.1",
     "autoprefixer": "^10.4.20",
     "bootstrap": "^5.3.3",

@@ -31,6 +31,9 @@ application.register("slim-select", SlimSelectController)
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
 
+import TimePickerController from "./time_picker_controller"
+application.register("time-picker", TimePickerController)
+
 import ToDoAddNestedFormController from "./to_do_add_nested_form_controller"
 application.register("to-do-add-nested-form", ToDoAddNestedFormController)
 
@@ -42,3 +45,6 @@ application.register("to-do-list-update-status", ToDoListUpdateStatusController)
 
 import TurboModalController from "./turbo_modal_controller"
 application.register("turbo-modal", TurboModalController)
+
+import Popover from "@stimulus-components/popover";
+application.register("popover", Popover);

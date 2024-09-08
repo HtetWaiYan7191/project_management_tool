@@ -25,6 +25,10 @@ module ApplicationHelper
     request.path.include?('/boards') # Adjust the path as necessary
   end
 
+  def event_page?
+    request.path.include?('/events')
+  end
+
   def profile_page
     request.path == '/profile/edit' ? 'active' : ''
   end
