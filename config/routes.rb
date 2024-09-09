@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :events do 
-    collection do 
+  resources :events do
+    collection do
       get '/:date/filter_by_date', to: 'events#filter_by_date'
     end
   end

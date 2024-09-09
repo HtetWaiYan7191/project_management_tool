@@ -9,5 +9,5 @@ class Company < ApplicationRecord
   has_many :doc_and_files
   has_many :to_dos
   has_many :boards
-  has_many :events 
+  has_many :events
 end

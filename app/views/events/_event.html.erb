@@ -1,27 +1,9 @@
-<div id="<%= dom_id event %>">
-  <p>
-    <strong>Title:</strong>
-    <%= event.title %>
-  </p>
+<div id="<%= dom_id event %>" class="d-flex gap-5 border-bottom p-3 my-3">
+ <p><%= event.created_at.strftime("%a, %b %d").upcase %></p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= event.description %>
-  </p>
-
-  <p>
-    <strong>Start time:</strong>
-    <%= event.start_time %>
-  </p>
-
-  <p>
-    <strong>End time:</strong>
-    <%= event.end_time %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= event.location %>
-  </p>
+ <div class="">
+    <h5 class="text-capitalize fw-bold"><%= event.title %></h5>
+    <small class="text-muted"><%= format_hour_minutes(event.start_time) %> - <%= format_hour_minutes(event.end_time)  %></small>
+ </div>
 
 </div>

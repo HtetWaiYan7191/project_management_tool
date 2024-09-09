@@ -98,11 +98,11 @@ gem 'ransack'
 # Easy sorting
 gem 'acts_as_list'
 
-# pagination 
+# pagination
 gem 'kaminari'
 
 # Calendar
-gem "simple_calendar"
+gem 'simple_calendar'
 
 # Easy schedule expension
-gem "ice_cube"
+gem 'ice_cube'

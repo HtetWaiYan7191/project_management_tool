@@ -38,6 +38,6 @@ module ApplicationHelper
   end
 
   def record_edited?(record)
-    record.updated_at > record.created_at 
+    record.updated_at > record.created_at
   end
 end

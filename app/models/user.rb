@@ -39,8 +39,7 @@ class User < ApplicationRecord
     avatar.variant(resize_to_limit: [200, 200]).processed
   end
 
-    def avatar_url
+  def avatar_url
     Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true) if avatar.attached?
   end
-
 end

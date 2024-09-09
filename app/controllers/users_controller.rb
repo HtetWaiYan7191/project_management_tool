@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def index
-    if params[:query].present? 
-      @users = User.where('full_name ILIKE ?', "%#{params[:query]}%")
-    else 
-      @users = User.none 
-    end
-    respond_to do |format|
-      format.json 
-    end
+    @users = if params[:query].present?
+               User.where('full_name ILIKE ?', "%#{params[:query]}%")
+             else
+               User.none
+             end
+    respond_to(&:json)
   end
 end

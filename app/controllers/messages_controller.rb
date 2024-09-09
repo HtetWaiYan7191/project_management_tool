@@ -88,7 +88,7 @@ class MessagesController < ApplicationController
   end
 
   def messages_target
-    params.fetch(:turbo_target, "messages-list")
+    params.fetch(:turbo_target, 'messages-list')
   end
 
   # Only allow a list of trusted parameters through.

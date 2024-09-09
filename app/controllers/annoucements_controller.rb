@@ -10,7 +10,7 @@ class AnnoucementsController < ApplicationController
 
     @grouped_annoucements = @annoucements.group_by { |a| a.created_at.to_date }
 
-    respond_to do |format| 
+    respond_to do |format|
       format.turbo_stream
       format.html
     end
@@ -19,9 +19,9 @@ class AnnoucementsController < ApplicationController
   # GET /annoucements/1 or /annoucements/1.json
   def show
     @comments = @annoucement.comments.order(created_at: :desc).page(params[:page]).per(5)
-    @next_page = @comments.next_page 
+    @next_page = @comments.next_page
 
-    respond_to do |format| 
+    respond_to do |format|
       format.turbo_stream
       format.html
     end

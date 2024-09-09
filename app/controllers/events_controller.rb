@@ -5,6 +5,10 @@ class EventsController < ApplicationController
   def index
     start_date = params.fetch(:start_date, Date.today).to_date
     @events = Event.where(start_time: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+    @events_group_by_date = Event.where(start_time: start_date.beginning_of_month..start_date.end_of_month)
+                              .where('start_time > ?', Date.today)
+      .group_by { |event| event.start_time.to_date }
+    
   end
 
 def filter_by_date
@@ -21,6 +25,7 @@ end
 
   # GET /events/new
   def new
+    @start_date = params.fetch(:start_date, Date.today).to_date
     @event = Event.new
   end
 

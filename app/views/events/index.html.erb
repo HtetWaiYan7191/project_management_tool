@@ -19,13 +19,28 @@
 </div>
 
 
-<div id="events">
-  <% @events.each do |event| %>
-    <%= render event %>
-    <p>
-      <%= link_to "Show this event", event %>
-    </p>
+<div id="events" class="d-flex justify-content-center flex-column w-50 mx-auto py-5">
+  <% if @events_group_by_date.present? %>
+    <% @events_group_by_date.each do |date, events | %>
+      <% events.each do |event| %>
+      <div class="d-flex align-items-center gap-4">
+          <h5 class="fw-semibold mb-0"><%= date.strftime('%B %d, %Y') %> </h5>
+          <span class="fw-bold">(<%= (event.start_time.to_date - Date.today).to_i  %>
+          days from now)</span>
+      </div>
+        <%= render event %>
+      <% end %>
+    <% end %>
+  <% else %>
+      <div class="border-3 border-dashed  border-warning d-flex gap-5 p-5 bg-warning">
+          <i class="bi bi-chat-left-dots-fill fs-2 text-secondary"></i>
+          <div class='no-data-message-container d-flex flex-column gap-2'>
+                <h5 class="fw-bold">No Events Yet</h5>
+                <p class="text-muted">
+                    No Events for this month...
+                </p>
+          </div>
+        </div>
   <% end %>
 </div>
 
-<%= link_to "New event", new_event_path %>
