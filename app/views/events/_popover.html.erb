@@ -26,8 +26,18 @@
             </div>
         <% end %>
     </div>
-    <div class="bg-dark p-3 d-flex justify-content-start">
+    <div class="bg-dark p-3 d-flex flex-column justify-content-start">
+        <% if events.empty? %>
+            <div class=" p-4">
+                <h5 class="text-secondary">No Events for <%= date.day %></h5>
+            </div>
+            <div class="mt-4">
+                <%= render partial: 'shared/form_modal', locals: {content: 'New Event', target: "#{date}Modal",
+            form: render('events/form', event: Event.new, start_date: date)}%>
+            </div>
+        <% else %>
         <%= render partial: 'shared/form_modal', locals: {content: 'New Event', target: "#{date}Modal",
         form: render('events/form', event: Event.new, start_date: date)}%>
     </div>
+    <% end %>
 </div>
