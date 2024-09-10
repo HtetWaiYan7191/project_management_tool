@@ -14,6 +14,15 @@
                     <p class="fw-semibold mb-0 text-white"><%= event.title %></p>
                     <small class="text-white"><%= event.location %></small>
                 </div>
+                <div class="d-flex gap-3">
+                    <%= render partial: 'shared/icon_form', locals: {
+                    content: 'Edit Event',
+                    icon: 'bi bi-pencil-square text-primary fs-5 fw-semibold',
+                    target: "#{event.id}Modal",
+                    form: render(partial: 'events/form',  locals: {event: event, start_date: nil})
+                    } %>
+                    <%= button_to '', event_path(event), method: :delete, class: 'bi bi-trash text-danger fs-5 fw-semibold', style:'background: inherit;' %>
+                </div>
             </div>
         <% end %>
     </div>
