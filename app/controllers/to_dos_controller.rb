@@ -5,7 +5,7 @@ class ToDosController < ApplicationController
 
   # GET /to_dos or /to_dos.json
   def index
-    @to_dos = ToDo.all
+    @to_dos = ToDo.includes(:to_do_lists).all
   end
 
   # GET /to_dos/1 or /to_dos/1.json

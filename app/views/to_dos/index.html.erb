@@ -1,13 +1,8 @@
 
 
-<div id="to_dos">
+<div id="to_dos" class="row container-fluid p-5">
   <% @to_dos.each do |to_do| %>
-    <%= to_do.name %>
-    <p>
-      <%= link_to "Show this to do", to_do %>
-    </p>
+    <%= render partial: 'to_do_card', locals: {to_do: to_do} %>
   <% end %>
 </div>
-
-<%= link_to "New to do", new_to_do_path %>
   

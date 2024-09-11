@@ -1,0 +1,31 @@
+<div class="col-4">
+    <div class="to-do-card p-4 border rounded bg-white">
+        <div class="d-flex align-items-center gap-2">
+            <% if to_do.status == true %>
+                <div class="bg-success rounded-circle" style="width: 20px; height: 20px"></div>
+            <% else %>
+                <div class="bg-gray rounded-circle" style="width: 20px; height: 20px"></div>
+            <% end %>
+                <p class="fw-semibold fs-6 text-capitalize"><%= to_do.name %></p>
+        </div>
+        <p class="text-muted mt-2 mb-5 ">
+           <%= to_do.to_do_lists.where(status: false).count %> /<%= to_do.to_do_lists.count %> completed
+        </p>
+        <div style="height: 200px; max-height: 200px" class="overflow-hidden d-flex flex-column gap-2">
+            <% to_do.to_do_lists.each do |to_do_list| %>
+                <div class="d-flex align-items-center gap-3">
+                <% if to_do_list.status == true %>
+                    <div class="bg-success rounded-circle" style="width: 15px; height: 15px; align-self:start"></div>
+                <% else %>
+                    <div class="border rounded-circle" style="width: 15px; height: 15px; align-self:start"></div>
+                <% end %>
+                    <small class="text-muted"><%= to_do_list.name %></small>
+                </div>
+                <% end %>
+
+        </div>
+        <div class="d-flex justify-content-center mt-5">
+            <%= link_to "Show More", to_do_path(to_do), class: 'btn btn-secondary'%>
+        </div>
+    </div>
+</div>
