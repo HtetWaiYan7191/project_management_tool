@@ -1,6 +1,6 @@
 
 
-<div id="to_dos" class="row container-fluid p-5">
+<div id="to_dos" class="row container-fluid p-5 gy-3">
   <% @to_dos.each do |to_do| %>
     <%= render partial: 'to_do_card', locals: {to_do: to_do} %>
   <% end %>
