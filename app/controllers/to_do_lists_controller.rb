@@ -60,6 +60,7 @@ class ToDoListsController < ApplicationController
 
   # DELETE /to_dos/:to_do_id/to_do_lists/:id
   def destroy
+    authorize! :destroy, @to_do_list
     if @to_do_list.destroy
       redirect_to to_do_path(@to_do), notice: 'ToDo List was successfully destroyed.'
     end

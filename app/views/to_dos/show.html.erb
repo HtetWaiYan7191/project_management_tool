@@ -6,7 +6,9 @@
         action: 'to-do-list-update-status#updateStatus'} %>
         <%= form.label :status, @to_do.name, class: 'fw-bold fs-3 ' %>
       <% end %>
-      <%= button_to "", to_do_path(@to_do), method: :delete, class:'bi bi-trash text-danger fs-4 fw-semibold', style: 'background: inherit'%>
+      <% if can? :destroy, current_user %>
+        <%= button_to "", to_do_path(@to_do), method: :delete, class:'bi bi-trash text-danger fs-4 fw-semibold', style: 'background: inherit'%>
+      <% end %>
     </div>
 
     <% if @to_do_lists.present? %>

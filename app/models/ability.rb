@@ -11,5 +11,8 @@ class Ability
     can :read, Comment # Allow reading comments
     can :update, Comment, user_id: user.id # Allow editing comments created by the user
     can :destroy, Comment, user_id: user.id # Allow deleting comments created by the user
+
+    can :destroy, ToDo if user.role == 'admin'
+    can :destroy, ToDoList if user.role == 'admin'
   end
 end

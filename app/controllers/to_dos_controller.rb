@@ -64,6 +64,7 @@ class ToDosController < ApplicationController
 
   # DELETE /to_dos/1 or /to_dos/1.json
   def destroy
+    authorize! :destroy, @to_do
     @to_do.destroy!
 
     respond_to do |format|

@@ -56,10 +56,11 @@
           <%= render partial: 'shared/overlay_icon', locals: {user:, index:}%>
         <% end %>
       </div>
-
-      <div class="ms-auto">
-        <%= button_to "", to_do_to_do_list_path(@to_do, to_do_list), method: :delete, class:'bi bi-trash text-danger fs-4 fw-semibold', style: 'background: inherit'%>
-      </div>
+      <% if can? :destroy, current_user %>
+          <div class="ms-auto">
+            <%= button_to "", to_do_to_do_list_path(@to_do, to_do_list), method: :delete, class:'bi bi-trash text-danger fs-4 fw-semibold', style: 'background: inherit'%>
+          </div>
+      <% end %>
   </div>
 
     <%= turbo_frame_tag dom_id(to_do_list) do %>
