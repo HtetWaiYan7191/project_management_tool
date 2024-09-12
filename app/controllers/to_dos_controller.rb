@@ -5,7 +5,12 @@ class ToDosController < ApplicationController
 
   # GET /to_dos or /to_dos.json
   def index
-    @to_dos = ToDo.includes(:to_do_lists).all
+    @to_dos = ToDo.includes(:to_do_lists).order(created_at: :desc).page(params[:page]).per(6)
+    @next_page = @to_dos.next_page
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
   end
 
   # GET /to_dos/1 or /to_dos/1.json

@@ -1,0 +1,8 @@
+    <%= turbo_stream.append "to_dos" do %>
+        <%= render partial: 'to_dos/to_dos', locals: { to_dos: @to_dos } %>
+    <% end %>
+
+    <!-- Update or remove the Load More button -->
+    <%= turbo_stream.replace "pager" do %>
+        <%= render partial: "shared/pager", locals: {next_page: @next_page} %>
+    <% end %>
