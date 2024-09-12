@@ -14,6 +14,11 @@
           <small class="text-muted align-self-end">Edited</small>
         <% end %>
       <% end %>
+
+      <div class="mt-2">
+        <%= turbo_frame_tag "reply_comment#{comment.id}" %>
+      </div>
+
     </div>
 
     <div class="dot-container">
@@ -21,17 +26,22 @@
       <button class=" btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-three-dots"></i>
       </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <ul class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton1">
          <% if can?(:update, comment) %>
-            <%= link_to 'Edit', edit_annoucement_comment_path(@annoucement, comment), data: { turbo_frame: dom_id(comment) }, class: 'dropdown-item' %>
+            <%= link_to 'Edit', edit_annoucement_comment_path(@annoucement, comment), data: { turbo_frame: dom_id(comment) }, class: 'dropdown-item p-2' %>
         <% end %>
 
         <% if can?(:destroy, comment) %>
           <%= button_to 'Delete', annoucement_comment_path(@annoucement, comment),
-           method: :delete, class: 'dropdown-item', data: { turbo: false } %>
+           method: :delete, class: 'dropdown-item p-2', data: { turbo: false } %>
         <% end %>
+        
+        <li>
+          <%= link_to "Reply", reply_comment_annoucement_comment_path(@annoucement, comment),
+           data: {turbo_frame: "reply_comment#{comment.id}"}, class: 'dropdown-item p-2'%>
+        </li>
 
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        
       </ul>
     </div>
     </div>

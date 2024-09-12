@@ -18,7 +18,7 @@ class AnnoucementsController < ApplicationController
 
   # GET /annoucements/1 or /annoucements/1.json
   def show
-    @comments = @annoucement.comments.order(created_at: :desc).page(params[:page]).per(5)
+    @comments = @annoucement.comments.where(parent_id: nil).order(created_at: :desc).page(params[:page]).per(5)
     @next_page = @comments.next_page
 
     respond_to do |format|

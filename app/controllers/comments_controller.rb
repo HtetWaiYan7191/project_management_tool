@@ -3,10 +3,14 @@
 class CommentsController < ApplicationController
   before_action :set_commentable
   before_action :set_comment, only: %i[edit show update destroy]
-  load_and_authorize_resource
 
   def index
     @comments = @commentable.comments
+  end
+
+  def reply_comment
+    @annoucement = Annoucement.find(params[:annoucement_id])
+    @comment = Comment.find(params[:id])
   end
 
   def edit; end
@@ -53,6 +57,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content).merge(user_id: current_user.id)
+    params.require(:comment).permit(:content, :parent_id).merge(user_id: current_user.id)
   end
 end

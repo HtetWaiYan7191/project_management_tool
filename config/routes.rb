@@ -43,9 +43,14 @@ Rails.application.routes.draw do
   patch 'profile/update'
 
   resources :annoucements do
-    resources :comments
+    resources :comments do 
+      member do 
+        get :reply_comment
+      end
+    end
   end
 
+  
   resources :doc_and_files do
     resources :comments
   end
@@ -59,7 +64,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     confirmations: 'users/confirmations'
   }
-
+  
   # Define authenticated and unauthenticated root paths
   authenticated :user do
     root 'pages#home', as: :authenticated_root
@@ -68,7 +73,9 @@ Rails.application.routes.draw do
   unauthenticated do
     root 'pages#welcome', as: :unauthenticated_root
   end
-
+  
   # Defines the root path route ("/")
   get 'pages/landing', to: 'pages#landing'
+  
 end
+
