@@ -13,6 +13,11 @@
         <% if record_edited?(comment) %>
           <small class="text-muted align-self-end">Edited</small>
         <% end %>
+        <% if comment.reply_comments.present? %>
+          <% comment.reply_comments.each do |reply_comment| %>
+            <p><%= reply_comment.content %></p>
+          <% end %>
+        <% end %>
       <% end %>
 
       <div class="mt-2">
