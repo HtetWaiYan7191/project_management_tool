@@ -3,7 +3,7 @@
 <div id="to_dos" class="row container-fluid p-5 gy-3">
   <%= render partial: 'to_dos', locals: {to_dos: @to_dos}%>
 
-  <%= render partial: "shared/pager",
+  <%= render partial: "to_dos/pager",
    locals: {next_page: @next_page} %>
 </div>
   

@@ -60,8 +60,9 @@ class ToDoListsController < ApplicationController
 
   # DELETE /to_dos/:to_do_id/to_do_lists/:id
   def destroy
-    @to_do_list.destroy
-    redirect_to to_do_to_do_lists_path(@to_do), notice: 'ToDo List was successfully destroyed.'
+    if @to_do_list.destroy
+      redirect_to to_do_path(@to_do), notice: 'ToDo List was successfully destroyed.'
+    end
   end
 
   private
