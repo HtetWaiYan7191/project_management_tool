@@ -14,9 +14,11 @@
           <small class="text-muted align-self-end">Edited</small>
         <% end %>
         <% if comment.reply_comments.present? %>
+        <div class="d-flex flex-column gap-3 pt-4 ps-5 border-start border-2">
           <% comment.reply_comments.each do |reply_comment| %>
-            <p><%= reply_comment.content %></p>
+            <%= render partial: 'comments/reply_comment_card', locals: {reply_comment: reply_comment}%>
           <% end %>
+        </div>
         <% end %>
       <% end %>
 

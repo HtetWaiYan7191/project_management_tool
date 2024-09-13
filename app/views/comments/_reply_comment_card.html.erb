@@ -1,0 +1,14 @@
+<div class="d-flex gap-3">
+  <div class="position-relative reply-comment-icon-wrapper">
+    <!-- Wrap the image in a div or span -->
+    <%= image_tag reply_comment.user.avatar_icon, class: 'reply-comment-icon', style: 'object-fit: cover; width: 30px; height: 30px; border-radius: 50%' %>
+  </div>
+  <div class="rounded p-2 border" style="background-color: #f2f2f2">
+    <p>
+      <%= reply_comment.user.full_name %>
+    </p>
+    <p>
+      <%= reply_comment.content %>
+    </p>
+  </div>
+</div>

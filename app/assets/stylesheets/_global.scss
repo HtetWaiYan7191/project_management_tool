@@ -104,7 +104,19 @@ p {
   resize: none; /* Prevent manual resizing */
   overflow: hidden; /* Hide scrollbars until necessary */
 }
+.reply-comment-icon-wrapper {
+  z-index: 10;
+}
 
-
+.reply-comment-icon-wrapper::before {
+    content: "";
+    background: var(--bs-border-color);
+    width: 3em;
+    height: 1px;
+    position: absolute;
+    top: 20%;
+    left: -48px;
+    z-index: -1;
+}
 
 
