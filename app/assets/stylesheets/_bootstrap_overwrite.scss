@@ -1,6 +1,13 @@
+@import './variables';
+
 .btn, .form-select {
     border-radius: 20px;
     font-weight: 600;
+}
+
+.full-btn:hover {
+    background-color: rgba(123, 211, 234, 0.5)
+ // Example for a blue color
 }
 
 .border-dashed {
