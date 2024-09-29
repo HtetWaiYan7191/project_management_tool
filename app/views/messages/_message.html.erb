@@ -1,5 +1,7 @@
 <div id="<%= dom_id message %>"  class="d-flex align-items-center gap-2 cont-<%= message.user.id %> " style="max-width: 75%;">
-  <%= render partial: 'shared/avatar_icon', locals: {link: message.user.avatar_icon} %>
+  <% if message.user.avatar_icon.present? %>
+    <%= render partial: 'shared/avatar_icon', locals: {link: message.user.avatar_icon} %>
+  <% end %>
   <div class="d-flex flex-column bg-light-grey rounded p-2 msg-<%= message.user.id %>" style="flex: 7">
       <div class=" d-flex align-items-center gap-2 msg-card-<%= message.user.id %> " >
         <p class="fw-bold "><%= message.user.full_name %></p>

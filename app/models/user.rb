@@ -36,7 +36,7 @@ class User < ApplicationRecord
   enum role: { user: 0, admin: 1 }
 
   def avatar_icon
-    avatar.variant(resize_to_limit: [200, 200]).processed
+    avatar.variant(resize_to_limit: [200, 200]).processed if avatar.present?
   end
 
   def avatar_url

@@ -10,8 +10,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# Company.create(name: 'apple')
-# Company.create(name: 'google')
+Company.create(name: 'apple')
+Company.create(name: 'google')
 
-# Department.create(name: 'department1', company: Company.first)
-# Department.create(name: 'department2', company: Company.second)
+Department.create(name: 'department1', company: Company.first)
+Department.create(name: 'department2', company: Company.second)

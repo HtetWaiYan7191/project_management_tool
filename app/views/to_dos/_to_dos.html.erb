@@ -1,3 +1,10 @@
-  <% to_dos.each do |to_do| %>
-    <%= render partial: 'to_do_card', locals: {to_do: to_do} %>
+  <% if to_dos.present? %>
+    <% to_dos.each do |to_do| %>
+      <%= render partial: 'to_do_card', locals: {to_do: to_do} %>
+    <% end %>
+  <% else %>
+  <div class="d-flex justify-content-center">
+    <%= render partial: 'shared/no_data', locals: {title: 'No To Dos For Now',
+     description: 'Organize work across teams to get things done on time. Assign tasks, set due dates, and discuss.'} %>
+  </div>
   <% end %>
