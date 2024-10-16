@@ -1,0 +1,21 @@
+    <div>
+        <button type="button" class="btn btn-secondary d-flex gap-2 align-items-center" data-bs-toggle="modal" data-bs-target="#<%= target %>">
+          <i class="bi bi-plus"></i>
+          <%= content %>
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="<%= target %>"  tabindex="-1" aria-labelledby="<%= target %>" aria-hidden="true">
+          <div class=" modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="<%= target %>"><%= content %></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body p-3">
+                <%= form %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>

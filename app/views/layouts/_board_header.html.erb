@@ -1,0 +1,44 @@
+<div class="py-4 border border-b board-header d-flex justify-content-between align-items-center container-fluid">
+    <div class="btn-container">
+        <% if request.path == link && request.path != '/messages' && request.path != '/events' %>
+            <%= link_to new_link, class: 'btn btn-secondary d-flex  align-items-center' do %>
+                    <i class="bi bi-plus fs-5 me-1"></i>
+                    New 
+            <% end %>
+        <% else %>
+            <% if request.path == '/messages' || request.path.match?(/^\/boards\/\d+$/) || request.path.include?('/events') %>
+                <%= link_to authenticated_root_path, class: 'btn btn-secondary d-flex gap-2 align-items-center' do %>
+                    <i class="bi bi-arrow-left"></i> 
+                    Back
+                <% end %>
+            <% else %>
+                <%= link_to link, class: 'btn btn-secondary d-flex gap-2 align-items-center' do %>
+                    <i class="bi bi-arrow-left"></i> 
+                    Back
+                <% end %>
+            <% end %>
+        <% end %>
+
+    </div>
+    <%= link_to authenticated_root_path, class: 'text-decoration-none text-black' do %>
+        <h3 class="fw-bold"><%= title %></h3>
+    <% end %>
+
+    <div class="filter-container d-flex align-items-center gap-3 pe-3">
+        <% if request.path == '/messages'%>
+            <i class="bi bi-bell-fill"> <small>Notifying</small></i>  
+        <% end %>
+
+        <%  if request.path == '/annoucements' %>
+            <%= search_form_for @q, url: annoucements_path, method: :get, class: "d-flex" do |f| %>
+                <div class="field me-2">
+                    <%= f.select :status_eq, 
+                        options_for_select([['All', '']] + Annoucement.statuses.to_a.map { |status| [status[0].humanize, status[1]] }, params.dig(:q, :status_eq)), 
+                        {}, 
+                        { class: 'form-select', onchange: 'this.form.submit()' } %>
+                </div>
+            <% end %>
+        <% end %>
+        <%= render 'shared/logout_dropdown' %>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+@import '../variables';
+
+.to-do-card {
+    transition: box-shadow .3s;
+}
+
+
+.to-do-card:hover {
+    box-shadow: 0 0 50px $warning; 
+}

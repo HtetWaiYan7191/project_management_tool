@@ -1,0 +1,28 @@
+$primary: #7BD3EA;
+$secondary: #A1EEBD;
+$background: #fafafa;
+$text: #333333;
+$success: rgba(102, 187, 106, 0.8);  // 80% opacity
+$warning: rgb(255, 245, 204);
+$danger: rgb(185 28 28);   // 80% opacity
+$info: rgba(41, 182, 246, 0.8);      // 80% opacity
+$text-muted:#343A40;
+$lightGrey: #F4F4F4;
+
+// dark mode theme color 
+$darkBackground: #333333;
+$darkText: #fafafa;
+// dropdown color change 
+$dropdown-link-hover-color: #ffffff; // Change to your desired text color
+$dropdown-link-hover-bg: $info;
+
+// card hover color 
+
+// calendar 
+.bg-slate {
+    background-color: rgb(51 65 85) !important;
+}
+
+.bg-dark {
+    background-color: #333333;
+}

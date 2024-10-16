@@ -1,0 +1,56 @@
+<%#= turbo_frame_tag "annoucement_form" do %>
+  <div class="p-5">
+    <div class='form-container shadow-sm p-4'>
+      <%= form_with(model: annoucement, local: true, data: { turbo: false }) do |form| %>
+        <div>
+          <%= form.hidden_field :user_id %>
+        </div>
+
+        <div>
+          <%= form.hidden_field :company_id %>
+        </div>
+
+        <div class="mb-4">
+          <%= form.text_field :title, class: ' form-title', placeholder: 'Create Annoucement' %>
+        </div>
+
+        <div class="field mb-4">
+          <%= form.rich_text_area :content, data: {controller: "mentions", target: 'mentions.field'}, class: 'form-rich-text' %>
+        </div>
+
+          <div data-controller="choose-departments">
+          <div class="mb-4">
+            <p class="text-text fw-semibold">This Announcement is for...</p>
+            
+            <div class="mt-2 form-check">
+              <%= form.radio_button :department_selection, 'all_departments', data: { action: 'change->choose-departments#toggleDepartments' },  class: 'form-check-input', id: 'all_departments', checked: true %>
+              <%= form.label :department_selection, "All departments", class: 'form-check-label', for: 'all_departments' %>
+            </div>
+
+            <!-- Hidden field to send boolean value -->
+            <%= form.hidden_field :is_all_department, value: true, id: 'is_all_department' %>
+
+            <div class="mt-2 form-check">
+              <%= form.radio_button :department_selection, 'choose_departments', data: { action: 'change->choose-departments#toggleDepartments' }, class: 'form-check-input', id: 'choose_departments' %>
+              <%= form.label :department_selection, "Choose Departments", class: 'form-check-label', for: 'choose_departments' %>
+            </div>
+          </div>
+
+
+            <div class="field mb-4 d-none" data-target="choose-departments.departments"  >
+              <%= form.select :department_ids, Department.pluck(:name, :id), { multiple: true, class: 'form-control' }, {data: {controller: 'slim-select'}} %>
+            </div>
+          </div>
+
+        <div class="btn-container mt-5 d-flex gap-3">
+          <% if @annoucement.persisted? %>
+          <%= form.submit "Update", class: 'btn btn-secondary' %>
+          <% else %>
+          <%= form.submit "Save as a draft", class: 'btn btn-secondary', name: 'commit_type', value: 'drafted' %>
+          <%= form.submit  "Post this annoucement", class: 'btn btn-outline-secondary text-black', value: 'published'  %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<%# end %>

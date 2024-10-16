@@ -1,0 +1,9 @@
+<div id="pager" class="text-center mt-4">
+  <% if next_page %>
+    <%= link_to "Load More",
+        to_dos_path( page: next_page),
+        class: "border-bottom",
+        data: { turbo_stream: true }
+         %>
+  <% end %>
+</div>

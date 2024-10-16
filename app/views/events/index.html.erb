@@ -1,0 +1,46 @@
+
+<div class="calendar-container" >
+  <%= month_calendar(events: @events) do |date, events| %>
+      <div class='d-flex flex-column' data-controller="popover" data-popover-url-value="/events/<%= date %>/filter_by_date" >
+            <div data-action="click->popover#show mouseleave->popover#hide" class="d-flex flex-column justify-content-center align-items-center position-relative">
+                  <%= date.day%>
+              <div class="d-flex">
+                <% if events.present? %>
+                  <% events.each do |event| %>
+                    <span class="text-primary fs-4 fw-bold">.</span>
+                  <% end %>
+                <% else %>
+                  <span class="text-primary fs-4 fw-bold" style="opacity: 0; pointer-events:none;">.</span>
+                <% end %>
+              </div>
+            </div>
+      </div>
+  <% end %>
+</div>
+
+
+<div id="events" class="d-flex justify-content-center flex-column w-50 mx-auto py-5">
+  <% if @events_group_by_date.present? %>
+    <% @events_group_by_date.each do |date, events | %>
+      <% events.each do |event| %>
+      <div class="d-flex align-items-center gap-4">
+          <h5 class="fw-semibold mb-0"><%= date.strftime('%B %d, %Y') %> </h5>
+          <span class="fw-bold">(<%= (event.start_time.to_date - Date.today).to_i  %>
+          days from now)</span>
+      </div>
+        <%= render event %>
+      <% end %>
+    <% end %>
+  <% else %>
+      <div class="border-3 border-dashed  border-warning d-flex gap-5 p-5 bg-warning">
+          <i class="bi bi-chat-left-dots-fill fs-2 text-secondary"></i>
+          <div class='no-data-message-container d-flex flex-column gap-2'>
+                <h5 class="fw-bold">No Events Yet</h5>
+                <p class="text-muted">
+                    No Events for this month...
+                </p>
+          </div>
+        </div>
+  <% end %>
+</div>
+

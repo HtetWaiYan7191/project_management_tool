@@ -1,0 +1,4 @@
+<%= turbo_stream.replace('flash', partial: 'shared/alert')%>
+<%= turbo_stream.replace "annoucement_form" do %>
+  <%= render partial: 'annoucements', locals: {annoucements: @annoucements} %>
+<% end %>

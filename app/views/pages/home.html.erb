@@ -1,0 +1,17 @@
+<section class="home-section pt-5">
+  <div class="home-logout-container d-flex justify-content-end pe-5 container">
+    <%= render 'shared/logout_dropdown' %>
+  </div>
+  <h2 class="text-center fw-bold">Website Redesign</h2>
+  <p class='text-center'>Everything related to the redesign of our Website</p>
+
+  <div class="container p-5">
+    <div class="home-board-card-container row g-4 mt-5">
+      <% @cards.each do |card| %>
+        <%= render partial: 'shared/board_card', locals: {card_title: card[:title], card_description: card[:description],
+        card_link: card[:link], svg: card[:svg], card_type: card[:card_type]  }%>
+      <% end %>
+    </div>
+  </div>
+
+</section>

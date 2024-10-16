@@ -1,0 +1,4 @@
+<%= turbo_frame_tag dom_id(@to_do_list) do %>
+ <%= render partial: 'to_do_lists/form', locals: {to_do_list: @to_do_list }%>
+<% end %>
+

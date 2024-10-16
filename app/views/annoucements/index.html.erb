@@ -1,0 +1,14 @@
+  <section class=" py-5">
+    <% if @grouped_annoucements.present? %>
+        <div id="annoucement-container">
+            <%= render partial: 'annoucements', locals: {group_annoucements: @grouped_annoucements}%>
+        </div>
+    <% else %>  
+        <div class="d-flex justify-content-center align-items-center">
+            <%= render 'shared/no_data', title: 'No Annoucements Yet', 
+            description: 'Post Annoucement, pitch ideas and gather feedback while keeping discussions organized and on-topic' %>
+        </div>
+    <% end %>  
+    <%= turbo_frame_tag "loader", loading: :lazy, src: annoucements_path(format: :turbo_stream, page: @annoucements.next_page)%>
+    </section>
+<%#= render partial: 'annoucements', locals: {annoucements: @annoucements} %>

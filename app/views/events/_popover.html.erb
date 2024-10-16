@@ -1,0 +1,43 @@
+<div data-popover-target="card" style="width:400px; left:3rem; z-index:999"
+ class="position-absolute d-flex flex-column rounded overflow-auto">
+    <div class="popover-header bg-primary p-3">
+        <span class="text-white "><%= date %></span>
+    </div>
+    <div class="popover-body bg-slate overflow-auto" style="max-height:300px;">
+        <% events.each do |event| %>
+            <div class="event-card d-flex align-items-center gap-5 p-4">
+                <div class="time d-flex flex-column">
+                    <span class="text-secondary"><%= event.start_time.strftime("%-I:%M %p") %></span>
+                    <span class="text-secondary"><%=event.end_time.strftime("%-I:%M %p") %></span>
+                </div>
+                <div class="event-info">
+                    <p class="fw-semibold mb-0 text-white"><%= event.title %></p>
+                    <small class="text-white"><%= event.location %></small>
+                </div>
+                <div class="d-flex gap-3">
+                    <%= render partial: 'shared/icon_form', locals: {
+                    content: 'Edit Event',
+                    icon: 'bi bi-pencil-square text-primary fs-5 fw-semibold',
+                    target: "#{event.id}Modal",
+                    form: render(partial: 'events/form',  locals: {event: event, start_date: nil})
+                    } %>
+                    <%= button_to '', event_path(event), method: :delete, class: 'bi bi-trash text-danger fs-5 fw-semibold', style:'background: inherit;' %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <div class="bg-dark p-3 d-flex flex-column justify-content-start">
+        <% if events.empty? %>
+            <div class=" p-4">
+                <h5 class="text-secondary">No Events for <%= date.day %></h5>
+            </div>
+            <div class="mt-4">
+                <%= render partial: 'shared/form_modal', locals: {content: 'New Event', target: "#{date}Modal",
+            form: render('events/form', event: Event.new, start_date: date)}%>
+            </div>
+        <% else %>
+        <%= render partial: 'shared/form_modal', locals: {content: 'New Event', target: "#{date}Modal",
+        form: render('events/form', event: Event.new, start_date: date)}%>
+    </div>
+    <% end %>
+</div>

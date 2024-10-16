@@ -1,0 +1,14 @@
+ <%= render partial:'layouts/board_header', locals: {title: "Profile", link: authenticated_root_path, new_link: new_annoucement_path } %>
+<section class="profile-section p-5">
+    <div class="container row gx-5">
+        <div class="list-group col-3 ">
+            <%= link_to "Profile", profile_edit_path, class: "list-group-item list-group-item-action #{profile_page}" %>
+            <a href="#" class="list-group-item list-group-item-action">Account</a>
+            <%= link_to "Password", edit_user_registration_path, class: "list-group-item list-group-item-action #{change_password_page}"%>
+        </div>
+        <div class="edit-form-container col-8 border p-4 rounded">
+            <h4 class="fw-bold">Edit Profile</h4>
+            <%= render 'form', user: @current_user %>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+<div class=" col" style="width: 300px; min-width:300px; max-width:300px"  data-sortable-id="<%= list.id %>"
+ data-sortable-update-url="<%= reorder_lists_board_path(@board, list) %>">
+    <div class="header  border rounded" style="background-color: rgba(<%= list.color[1..-1].scan(/../).map { |c| c.to_i(16) }.join(', ') %>, 0.4);">
+        <div class="d-flex justify-content-between align-items-center p-3">
+            <h6 class="fw-semibold"><%= list.title %><span class="text-muted card-count">(<%= list.cards.count %>)</span></h6>
+            <%= render partial: 'shared/drop_down', locals: {board: @board,
+             destroy_path: board_list_path(@board, list), list: list,  title: "Add a new card to #{list.title}", modal_form: render('cards/form', list: list, card: Card.new)}%>
+        </div>
+
+            <div class="d-flex flex-column gap-3 p-3 " data-sortable-list-id="<%= list.id %>" data-controller="sortable" data-sortable-group-value="cards">
+                <% if list.cards.present?%>
+                    <% list.cards.each do |card| %>
+                        <%= render partial: 'cards/card', locals: {card: card, list: list} %>
+                    <% end %>
+                <% else %>
+
+                <% end %>
+            </div>
+    </div>
+</div>
+

@@ -1,0 +1,17 @@
+<div>
+    <%= form_with(model: [@board, list]) do |form| %>
+      <div>
+        <%= form.label :title, class: 'form-label' %>
+        <%= form.text_field :title, class: 'form-control'%>
+      </div>
+
+      <div class="mt-3">
+        <% if list.persisted? %>
+          <%= form.submit "Update", class: 'btn btn-secondary' %>
+        <% else %>
+          <%= form.submit "Add List", class: 'btn btn-secondary' %>
+        <% end %>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    <% end %>
+</div>

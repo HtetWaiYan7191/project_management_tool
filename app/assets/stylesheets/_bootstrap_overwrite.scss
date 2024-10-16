@@ -1,0 +1,29 @@
+@import './variables';
+
+.btn, .form-select {
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.full-btn:hover {
+    background-color: rgba(123, 211, 234, 0.5)
+ // Example for a blue color
+}
+
+.border-dashed {
+    border-style: dashed;
+    border-radius: 16px;
+}
+
+.bg-warning {
+   --bs-bg-opacity: 0.2;
+}
+
+.dropdown-item {
+    font-size: 14px;
+}
+
+.list-group-item.active {
+    color: $text;
+    font-weight: 600;
+}

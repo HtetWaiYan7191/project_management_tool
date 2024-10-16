@@ -1,0 +1,5 @@
+<%= turbo_stream.replace dom_id(@to_do_list) do %>
+  <%= render 'to_do_lists/form', to_do_list: @to_do_list %>
+<% end %>
+
+<%= turbo_stream.remove "add_button" %>

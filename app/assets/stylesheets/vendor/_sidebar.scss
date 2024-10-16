@@ -1,0 +1,31 @@
+@import '../variables';
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+
+}
+
+.sidebar a {
+  display: block;
+  color: $text;
+  padding: 16px;
+  font-size: 14px;
+  text-decoration: none;
+}
+ 
+.sidebar a.active {
+  background-color: $secondary;
+  font-weight: 600;
+  color: $text;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: mix($secondary, transparent, 50%); // 50% opacity
+  color: $text;
+}

@@ -1,0 +1,33 @@
+<%= turbo_frame_tag dom_id(to_do_list) do %>
+
+  <%= form_with(model: [@to_do, to_do_list], local: true, data: {turbo:false}) do |form| %>
+          <div class=" ps-5 py-2"> 
+            <%= form.text_field :name, class: 'form-title border-0 fw-bold fs-5 px-2', placeholder: 'Describe this to do'%>
+          </div>
+
+          <div class="d-flex align-items-center  gap-4  px-5 pt-3 pb-2">
+            <%= form.label :assigned_user_ids, "Assigned to", class: 'form-label ' %>
+            <%= form.select :assigned_user_ids, current_department.users.pluck(:full_name, :id), { multiple: true, class: 'form-control' }, {data: {controller: 'slim-select'}} %>
+          </div>
+
+          <div class="d-flex align-items-center  gap-4  px-5 py-2">
+            <%= form.label :due_date, "Due On", class: 'form-label' %>
+              <div data-controller="flatpickr">
+                <%= form.text_field :due_date, class: 'form-control', placeholder: 'Select a date...', data: { flatpickr_target: "input" } %>
+              </div>       
+          </div>
+
+          <div class="d-flex align-items-center  gap-4  px-5 py-2">
+            <%= form.label :note, "Notes", class: "form-label" %>
+            <%= form.text_field :note, class: 'form-control', placeholder: "Add extra details"%>
+          </div>
+          
+            <div class="px-3 py-4">
+              <%= form.submit class: 'btn btn-secondary me-3' %>
+              <% unless to_do_list.persisted? %>
+                    <%= button_tag 'Cancel', type: 'button', class: 'btn btn-outline-secondary text-black d-none ',
+                  data: { to_do_add_nested_form_target: 'hideButton', action: 'click->to-do-add-nested-form#hide' } %>
+              <% end %>
+            </div>
+  <% end %>
+<% end %>

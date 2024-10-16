@@ -1,0 +1,46 @@
+/* Define the keyframes for the sliding animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%); /* Combine both horizontal and vertical transforms */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0); /* Keep horizontal centering while sliding down */
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0); /* Keep horizontal centering while sliding down */
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -100%); /* Combine both horizontal and vertical transforms */
+  }
+}
+
+/* Apply the animation to your notification */
+.notification-enter {
+  animation: slideDown 1s forwards; /* Adjust the duration as needed */
+}
+
+.notification-leave {
+  animation: slideUp 1s forwards; /* Adjust the duration as needed */
+}
+
+/* Hide the notification by default */
+// .notification-hidden {
+//   display: none;
+// }
+
+.notification-position {
+  // position: absolute; /* Change to fixed to position relative to the viewport */
+  top: 20px; /* Adjust this value to control the distance from the top */
+  left: 50%;
+  transform: translateX(-80%); /* This will center the element horizontally */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+

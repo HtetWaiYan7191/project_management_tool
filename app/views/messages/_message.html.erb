@@ -1,0 +1,12 @@
+<div id="<%= dom_id message %>"  class="d-flex align-items-center gap-2 cont-<%= message.user.id %> " style="max-width: 75%;">
+  <% if message.user.avatar_icon.present? %>
+    <%= render partial: 'shared/avatar_icon', locals: {link: message.user.avatar_icon} %>
+  <% end %>
+  <div class="d-flex flex-column bg-light-grey rounded p-2 msg-<%= message.user.id %>" style="flex: 7">
+      <div class=" d-flex align-items-center gap-2 msg-card-<%= message.user.id %> " >
+        <p class="fw-bold "><%= message.user.full_name %></p>
+        <small class="text-muted fw-semibold"><%= format_hour_minutes(message.created_at) %></small>
+      </div>
+      <p class="text-wrap"><%= message.content %></p>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<%= form_with(model: board, local:false, data: { controller: 'cards', action: 'submit->cards#submit'}) do |form| %>
+  <input type="hidden" name="board_id" value="<%= board.id %>">
+    <div data-cards-target="errorContainer" class="p-3 d-none bg-danger bg-opacity-25 my-4">
+      <p class="fw-semibold" data-cards-target="errorText">error</p>
+    </div>
+
+      <div>
+        <%= form.label :title, class: 'form-label' %>
+        <%= form.text_field :title, class: 'form-control'%>
+      </div>
+
+      <div class="mt-3">
+        <% if board.persisted? %>
+          <%= form.submit "Update", class: 'btn btn-secondary' %>
+        <% else %>
+          <%= form.submit "Add board", class: 'btn btn-secondary' %>
+        <% end %>
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+
+<% end %>
